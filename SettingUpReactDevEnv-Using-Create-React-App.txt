@@ -1,0 +1,302 @@
+
+Link to Setting up a react project by Robin:
+    https://courses.robinwieruch.de/p/the-road-to-learn-react
+ 
+1. Installing node and creating app:
+    - go to https://nodejs.org and have Node running on your system
+    - download and install latest node or run the windows installer
+      Note: create-react-app is a package in node
+            
+   
+    - once node is available in your system you should be able to run:
+        
+        npm -v to see the version
+
+        npx -v command
+
+        - create react environment for an application: 
+            npm i -g create-react-app && create-react-app Learn-React-Router6-Tutorial
+                 this will download 
+                  Create React App and store it in your systeme and then run the command to
+                 create cra-test app
+
+            npx create-react-app stylgram-demo-of-app-using-styled-components
+                 - is a better way of creating a react app
+                 the advantage of this command is that instead of giving a copy Create React App
+                 package locally and manually maintaning it when it gets ne releases,
+                 for example, with npx, you dont really need to do that, you just use whatever is the 
+                 recent release of Create React App directly from NPM registry in the server.
+
+               "x" is for execute. if the package is not availble npm will download the
+                package from the registry and cache it. It will also download a new one if needed
+                At this point np, is installig its depemdencies namely: react, react-dom and react-scripts...
+
+            Commands to run after creating the app in this case cra-test3: 
+                npm start 
+                npm run build
+                npm test - start the test runner 
+                npm run eject - removes this tool and copies build dependencies, configuration files 
+                     and scripts into the app directory
+
+             Lets explore the generated files 
+                do cd cra-test3  -> code . to bring up the source code in VS Code
+                   src.index.js file is the main renderer 
+               run nmp eject in order to ????
+
+2. To create your own Javascript development for React from SCRATCH 
+      See Pluralsight https://app.pluralsight.com/ilx/video-courses/cb023a50-6da5-40b7-8b24-ed3d0a140da0/54a012ec-d986-42d2-b98c-f287354c99e6/7bb43cdc-a524-4133-b4b6-785a7737edd4
+     
+      Go to https://jscomplete.com/reactful to see the latest steps to follow.
+      This is the link to "The always-recent guide to creating a development 
+      environment for Node  and React (with Babel and Webpack)". The following are the 
+      steps.
+
+      (1) Initializing 
+          - create empty directory and init it with package.json. this is the file used 
+            in node.js project to store general info about the project (like its name version, etc)
+            and tracks what dependencies the project needs. Create this file using npm init.
+                    
+            mkdir reactful 
+            cd reactful
+            npm init or npm init -Y  - once the command is done you should have 
+              package.json in the directory
+        
+      (2) Install main dependencies
+
+          - Step 1: Add Express to the project: 
+                   npm i Express        
+
+              This command will download the express npm package and place it under
+              a node_modules folder (which it will create because express is the 
+              first package we’re adding). The command will also save this dependency
+              to your package.json file.
+
+          - Step2: Next install frontend dependencies by running the 
+                     following commands. While the "react and react-dom" 
+                     packages are not really needed in production because 
+                     they get bundled into a single file, this guide assumes 
+                     that you deploy your "unbundled code" to production and 
+                     bundle things there. If you want to bundle things in 
+                     development and push your bundled files to production, 
+                     you can install these packages - and most of what’s 
+                     coming next - as development dependencies.
+               
+                npm i react react-dom 
+                    these 2 packages are the actual packages that contain the 
+                    the React core library and the react core ReactDOM library
+                    that we need to use to Render a react application to the DOM 
+                    or when we actually use server-side rendering as well.
+
+                    
+           - Step 3: "Webpack is a module binder". Since you’ll be writing your 
+                code in multiple modules (files) 
+                and it will depend on other modules (like React), you need a module 
+                bundler to translate all these modules into something that can work in 
+                all browsers today. You can use Webpack for that job. 
+                The packages you need to install now are:
+
+                    "npm i webpack webpack-cli" 
+
+                The "webpack-cli" package provides the webpack command, which you can use to 
+                bundle your modules. 
+
+                Install loaders. Webpack is just a generic module bundler. 
+                You need to configure it with loaders to transform code from one state 
+                into the other. For example, you need to transform React’s JSX code 
+                into React’s API calls. The tool for that job is Babel.
+
+             - Step 4:  Install the following loader to make Babel do its magic:
+                  "npm i babel-loader @babel/core @babel/node @babel/preset-env @babel/preset-react"
+
+      (3) Install Development dependencies. These are dependencies you don't need in production.
+
+            npm i -g -nodemon - This package will make the nodemon command available in your project. 
+                            Nodemon runs your Node server in a wrapper process that monitors the main 
+                            process and automatically restarts it when files are saved to the disk. Simple and powerful!
+
+            npm i -D eslint @babel/eslint-parser eslint-plugin-react eslint-plugin-react-hooks
+
+                To configure ESLint, you need to add a .eslintrc.js file in the root of the project. 
+                This file will naturally depend on your code style preferences, but definitely 
+                start it with the recommended configurations and then customize them as needed
+            
+            npm i -D jest babel-jest react-test-renderer - add a testing library. The most popular is JEST
+
+
+       (4) Now Configure your own environment
+           https://app.pluralsight.com/ilx/video-courses/cb023a50-6da5-40b7-8b24-ed3d0a140da0/54a012ec-d986-42d2-b98c-f287354c99e6/3ef29b50-8430-4456-a9f5-b4ec6810bf1c
+
+           Step 1: Configure ESLint, you need to add a .eslintrc.js file in the root of the project.
+                    .eslintrc.js and add the following code:
+                      module.exports = {
+                    parser: "@babel/eslint-parser",
+                    env: {
+                        browser: true,
+                        commonjs: true,
+                        es6: true,
+                        node: true,
+                        jest: true,
+                    },
+                    parserOptions: {
+                        ecmaVersion: 2020,
+                        ecmaFeatures: {
+                        impliedStrict: true,
+                        jsx: true,
+                        },
+                        sourceType: "module",
+                    },
+                    plugins: ["react", "react-hooks"],
+                    extends: [
+                        "eslint:recommended",
+                        "plugin:react/recommended",
+                        "plugin:react-hooks/recommended",
+                    ],
+                    settings: {
+                        react: {
+                        version: "detect",
+                        },
+                    },
+                    rules: {
+                        "react/prop-types": "off",
+                        "react/react-in-jsx-scope": "off",
+
+                        // You can do more rule customizations here...
+                    },
+                    };
+
+                You should configure your editor to highlight any ESLint issues for you as you type. 
+                All the major editors today have plugins to do that. You should also make your editor 
+                auto-format code for you on save. Prettier is a great option for that and it works 
+                well with ESLint.
+
+           Step 2: You should configure your editor (VSCode) to highlight any ESLint issues for 
+            you as you type. All the major editors today have plugins to do that. 
+            You should also make your editor auto-format code for you on save. 
+            Prettier is a great option for that and it works well with ESLint
+
+           Step 3: Install testing library.  
+            The most popular testing library that’s usually used with React is Jest. 
+            You’ll also need babel-jest and a test renderer like react-test-renderer:
+
+                npm i -D jest babel-jest react-test-renderer (run this later)
+
+          Step 4: Creating an initial directory structure
+            This really depends on your style and preferences, but a simple 
+            structure would be something like:
+
+                    reactful/
+                    dist/
+                        main.js
+                    src/
+                        index.js
+                        components/
+                        app.js
+                        server/
+                        server.js
+
+                Note how I created a separate server directory for the backend code. 
+                It’s always a good idea to separate code that you run in your trusted 
+                private backends from code that is to be run on public clients.
+
+                Run the following commands:
+                    md dist
+                    md src 
+                    md src/components
+                    md src/server
+
+            Step 5:  Configuring Webpack and Babel
+                To configure Babel to compile JSX and modern JavaScript code, 
+                create a babel.config.js file under the root of the project 
+                and put the following module.exports object in it:
+    
+
+                        module.exports = {
+                        presets: [
+                            "@babel/preset-env",
+                            ["@babel/preset-react", { "runtime": "automatic" }]
+                        ],
+                        };
+
+                To configure Webpack to bundle your application into a single bundle file, create a 
+                webpack.config.js file under the root of the project and put the following module.exports object in it:
+
+                    webpack.config.js
+
+                    module.exports = {
+                    module: {
+                        rules: [
+                        {
+                            test: /\.js$/,
+                            exclude: /node_modules/,
+                            use: {
+                            loader: "babel-loader",
+                            },
+                        },
+                        ],
+                    },
+                    };
+
+            Step 6: Creating npm scripts for development
+                In your package.json file, there is a scripts section. If you generated the file with 
+                the npm init defaults you’ll have a placeholder "test" script in there. 
+                Change that to work with Jest:
+                Add 2 more scripts. 
+                First a script to run the server file with Nodemon you can name the script anything.
+                You can call it dev:server 
+                    dev:server": "nodemon --exec babel-node src/server/server.js --ignore dist/
+
+                Second: Simple runner for webpack. You can call it dev:bundler
+                    "dev:bundler": "webpack -w --mode=development"
+                    The -w flag in the command above is to run Webpack in watch mode as well and 
+                    the --mode=development flag is to make Webpack generate a development-friendly bundle.
+    
+                        In prod change develpment to --mode=production in production.
+
+                // In package.json
+                    scripts: {
+                     "test": "jest",
+                     dev:server": "nodemon --exec babel-node src/server/server.js --ignore dist/",
+                    "dev:bundler": "webpack -w --mode=development"
+                    }
+
+            7. Testing everything with a sample application:
+            
+                Step 1: At this point, you are ready for your own code. If you followed 
+                    the exact configurations above, you’ll need to place your 
+                    ReactDOM.render call (or .hydrateRoot for SSR code) 
+                    in src/index.js and serve dist/main.js in your root HTML response.
+                    Here is a sample server-side ready React application that you can test with:
+
+                    Create:
+                        index.js in src/
+                        app.js in src/component
+
+                        Copy the provided sample code in app.js and index.js
+
+                    Create:
+                        server.js in src/server/ 
+                        copy the provided sample code to server.js
+
+                Step 2: Test. Open 2 terminals and run the following on separate terminals.     
+                    $ npm run dev:server
+                    $ npm run dev:bundler
+
+                    Then open up your browser on http://localhost:4242/, you should see the React 
+                    application rendered. This application should also be rendered if you disable 
+                    JavaScript in your browser! 
+
+                   Reactful
+                     - https://app.pluralsight.com/ilx/video-courses/cb023a50-6da5-40b7-8b24-ed3d0a140da0/54a012ec-d986-42d2-b98c-f287354c99e6/37b6569b-3721-4cc9-923e-cfc111938b6e
+
+
+3. Creating your project on your own Javascript Development Environment using library 
+   called "ReactFul" created by the course author.
+
+    (1) Create the project star-match
+          npx reactful star-match  - this creates a bare bone project repo that is 
+                                     fully configures for server-side render. All the 
+                                     files are there ready for you to customize it.
+
+          do code . 
+
+     (2)

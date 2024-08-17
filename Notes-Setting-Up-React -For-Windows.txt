@@ -1,0 +1,37 @@
+
+1. Reference: https://www.robinwieruch.de/react-js-windows-setup/
+
+2. Node.JS and NPM on Windows 
+    - Since you are going to use JavaScript for your React development on Windows, 
+    there is no way around Node.js and NPM. 
+    - Node.js is a JavaScript runtime which makes it possible to run JavaScript 
+    outside of the browser.
+
+    - NPM is used to install libraries, such as React.js, to your project on the 
+    command line.
+
+3. Using NODE and NPM in VS CODE's Integrated terminal
+     - in VS Code open a code called "Terminal" and enter the follwing commmands: 
+        node --version
+        npm --version
+
+4. Using Vite 
+    - Vite allows you to start React applications with zero-configuration.
+    - create your first React.js application 
+        (1) create a directory where you want to create your project. In this case
+            cd C:\_AMyReactDev
+
+        (2) Open a VSCode terminal:
+            npm create vite@latest my-first-react-project -- --template react
+            cd my-first-react-project
+            npm install
+            npm run dev - This command line should give you an output where you can find the application in the browser. 
+                          The default should be http://localhost:5173/
+                          (Press Ctl=C to terminate app)
+
+5. GIT FOR VISUAL STUDIO CODE AND WINDOWS
+     - go to https://git-scm.com/ and install git (look for Download for Windows button)
+     - after installing from VS Code do: git --version 
+
+     Note: Check out GitHub and Git Setup and Essentials
+       https://www.robinwieruch.de/git-essential-commands/

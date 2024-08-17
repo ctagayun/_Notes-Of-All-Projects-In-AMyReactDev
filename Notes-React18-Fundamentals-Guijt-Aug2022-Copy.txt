@@ -1,0 +1,52 @@
+
+React 18 Fundamentals by Roland Guijt
+   - https://app.pluralsight.com/course-player?clipId=6d7174d3-1cf4-4ab8-9bca-7d9cf3c194b7
+
+   - Course demo located in:
+       C:\_AMainDemos\DemoCT203-ReactJS-Fundamentals-Guijt 
+       C:\_AMainDemos\DemoCT30-react-18-fundamentals-By-Guijt-Aug2022
+       https://github.com/rolandguijt/ps-react-Fundamentals
+
+
+Module 2: The Power of React
+   - https://app.pluralsight.com/course-player?clipId=6d7174d3-1cf4-4ab8-9bca-7d9cf3c194b7
+
+Module 3: Anatomy of an Application
+   https://app.pluralsight.com/course-player?clipId=ffdbad48-3929-40e5-b373-8709559e6568
+
+   - components are js functions that returns JSX (javascript extension).
+     it looks like an html but it isn't
+
+   - use of function components is preferd when creating a components
+
+   - putting it all together 
+       - https://app.pluralsight.com/course-player?clipId=266c47f4-69f4-4576-af2d-6954a1acd675
+
+   - tooling
+       - https://app.pluralsight.com/course-player?clipId=2a9c4f25-1d5d-4a31-92a5-d433ed9af967 
+
+       - ready to-go development environment.  we wil use Next.js 
+     
+       - download node.js from https://nodejs.org
+
+   - Application Structure 
+       - https://app.pluralsight.com/course-player?clipId=f7c5d09c-ed17-4be7-b746-ea8301973e04
+       - create a new app:
+            npx create-next-app globomantics
+
+       - open the globomantics react app
+
+       - to compile and run: npm run dev
+
+   - Modules 
+       - https://app.pluralsight.com/course-player?clipId=0628fdb0-f752-4653-af35-43b6ff4376f2
+       - modules are building blocks to structure features/code
+       - components are building blocks of UI
+
+    -Adding new components 
+       - https://app.pluralsight.com/course-player?clipId=b1ea8448-21f1-4339-8856-4875235249db
+
+       - final product of this course is in  https://github.com/rolandguijt/ps-react-Fundamentals
+           - clone the repo 
+           - then do npm install
+           - then do npm run dev

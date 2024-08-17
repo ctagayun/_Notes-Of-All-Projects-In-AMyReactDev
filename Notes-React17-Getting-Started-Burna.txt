@@ -1,0 +1,3450 @@
+
+Demo Location:
+  C:\_AMainDemos\DemoCT205-React-Getting-Started-Buna\efficient-react-main
+
+
+=====================================
+Module 6: Setting Up a Development Environment
+   https://app.pluralsight.com/course-player?clipId=c5318037-cbe4-40f8-b664-5ac34dd262a3
+=====================================
+  Intro: https://app.pluralsight.com/course-player?clipId=a028fa58-7f10-4613-9d46-0b4885bba5a7
+  Book: jscomplete.com/beginning-js 
+  Labs: jscomplete.com/js-labs
+  References to Common Problems in JavaScript: https://jscomplete.com/react-cfp
+  Modern: ES2015+
+
+  1. create-react-app - a tool in React ecosystem to setup development environment
+  2. Steps:
+       - go to node.js and install node
+         open windows powershell  or command prompt to chek version - npm -v
+
+      - to create an app (run in CMD or git Bash for && to work)
+          npm i -g create-react-app && create-react-app cra-test
+ 
+          Inside that directory, you can run several commands:
+
+            npm start
+              Starts the development server.
+
+            npm run build
+              Bundles the app into static files for production.
+
+            npm test
+              Starts the test runner.
+
+            npm run eject
+              Removes this tool and copies build dependencies, configuration files
+              and scripts into the app directory. If you do this, you can’t go back!
+
+          We suggest that you begin by typing:
+
+            cd cra-test
+            npm start
+
+        a better way to do create a react app:
+          npx create-react-app cra-test2
+
+    3. VERY IMPORTANT. RECENT GUIDE TO CREATING YOUR OWN DEVELOPMENT ENVIRONMENT
+          HTTPS://JSCOMPLETE.COM/reactful 
+          https://app.pluralsight.com/course-player?clipId=37b6569b-3721-4cc9-923e-cfc111938b6e
+
+          cd c:/_amy-react-demos 
+          code . 
+          go to https://jsdrops.com/rgs3.9 and copy final code app folder in VS Code
+
+
+
+     
+=====================================
+Module 1: Introduction
+=====================================                                                                                                                 
+   https://app.pluralsight.com/course-player?clipId=a028fa58-7f10-4613-9d46-0b4885bba5a7
+
+   https:/agilelabs/com 
+
+   1. Javascript Ref:
+      Books: https://jscomplete.com/beginning.js - 
+          this book is for complete beginner  in javascript     
+          the lab cover some important concepts in javascript like functions...
+
+      Labs: https://jscomplete.com/js-labs - contains interactive labs on javascript
+
+          https://jscomplete.com/react-beyond-basics - 
+
+
+   2. React Ref
+         https://jscomplete.com/react-cfp   
+           - book that talks about common problems learners of React. check this book when you ran 
+             into problems when studying this course. 
+          
+
+         https://jscomplete.com/why-react - talks about why react is taking over frontend development
+           read this very important. Reasons behind React's popularity
+             1. Most importantly, React enables developers to declaratively describe their
+                User Interfaces and model the state of those interfaces. This means instead 
+                of coming up with steps to describe transactions on interfaces, developers 
+                just describe the interfaces in terms of a final state (like a function). 
+                When transactions happen to that state, React takes care of updating 
+                the User Interfaces based on that.
+
+             2. One reason is its Virtual DOM (React’s reconciliation algorithm). We’ll work 
+             through an example to show the actual practical value of having such an algorithm
+              at your command.
+
+         https://reactjs.org
+
+
+
+
+  Links to Exercises: 
+  https://jsdrops.com - jsDrops is a jsComplete series of short educational
+                        emails on full-stack JavaScript and related topics. 
+                        You can see a sample email below.
+                      - click get jsdrops button to get jsdrops. enter your name and email address
+                        Look for emails from jscomplete.com
+
+  jsdrops.com/arrow-functions 
+
+
+======================================
+Module 2: Basic 
+======================================
+  https://app.pluralsight.com/course-player?clipId=5e6dbb5d-1206-48bb-b0ec-f87b043e0f79
+  Exercises using Paground: https://jscomplete.com/playground 
+
+   React Basic Concepts 
+     1. Components
+        - the first concept is components. We define user interfaces using components 
+          line "functions". Think component as just functions
+
+        - the second is they receive Inputs: props, state | Output: UI
+
+        - third - components are reusable and composable. Components can contain other components.
+
+        - Fourth - components can manage a private state.
+
+        - a React component can be "Function" or a "Class"
+
+
+     2. Second concept is "Reactive Updates"
+
+     3. Third Concept - maintains virtual views in memory.
+        It generates HTML using JavaScript. No HTML Language. Handles DOM tree reconciliation
+
+
+   How to define a function in ReaCT
+
+      1. By using the keyword function - Regular Syntax
+           function Hello{
+              return <div> Hello React </div>;
+           }
+
+          Note: all function components by convention receive "props" even if the function 
+          doesn't have the param "props 
+          function Button(props) {
+	            return ( 
+                  <button onClick={props.onClickFunction}>
+                     + {props.increment}
+                 </button>
+              );
+            }
+
+
+
+      2. Create a react component without using the word "function 
+         but by using the ARROW FUNCTION. An arrow allows to skip return keyword, 
+ 
+
+            //using arrow functions without parameters
+             const Y = () =>{
+
+            };
+
+            
+            // arrow function with parameters
+            const hello = (val) => {
+               "Hello " + val;
+            } 
+
+          
+
+       3. Props 
+            //Note: all function components by convention receive "props" even if the function 
+            //doesn't have the param "props 
+            function Button(props) {
+	            return ( 
+                  <button onClick={props.onClickFunction}>
+                     + {props.increment}
+                 </button>
+              );
+            }
+
+            //sample of passing props to a component defined wit harrow function
+            const PlayNumber = props => (
+          	<button className="number" onClick={() => console.log('Num', props.number)}>
+               {props.number}
+            </button>
+          );
+
+   
+           //Define another component whose sole responsibility is to display the 
+           //value of the counter. It will not have it's own state.
+            //we are using parentheses after return because we are returning a 
+            //function call, remember, a React.createElement function call.
+
+            //since we are passing a prop to display in line 136, add a param here called "props"
+            //you can call it any name you want but usually it is named "props" thats the convention
+
+            //This "props" object will have a key-value pair for each attribute
+            function Display(props){
+                 return (  
+                   //Access the "message" attribute in the props
+                   <div>{props.message} </div>
+                 );
+            }
+        
+            //Simplify rendering by creating a new component called App
+            //within App return a DOM tree that contains <button/> amd <displa/> components
+
+            function App()
+            {
+              /*move the state hook here so that Button and Display components can access it
+              via prop */
+                const [counter, setCounter] = useState(42);
+                //add function to increment counter 
+                const incrementCounter = () => setCounter{counter +1};
+                return(
+                    <div>
+                      //props can also pass function.
+                      // 1. Pass a prop {incrementCounter} to Button component  
+                      // will pass "incrementCounter" function
+                      // 2. Pass another prop "increment={5} to be used by Button component
+                      <Button onclickFunction={incrementCounter} increment={5}  />
+                      //pass a prop and name it message
+                      <Display message{counter} />
+                    </div>
+                );
+            }
+
+
+
+   /*===============================
+   # Module 2: Your first React component and first ReaDhOOK
+   #============================== */
+        https://app.pluralsight.com/course-player?clipId=433d955d-791d-47a6-8c4a-1ce20897efbe
+
+        - always make the fist letter of you component name upper case
+        
+        1. React Basic concept 
+           https://app.pluralsight.com/course-player?clipId=433d955d-791d-47a6-8c4a-1ce20897efbe
+
+            Example 1. a function component that returns an html
+
+            function Hello(){
+                //this is not a legit javascript, but JSX.
+                //React uses special compiler to convert JSK to API
+                //that compiler is Babel
+                //The following code will be converted to: 
+                return React.createElement('div', null, 'Hello React');
+                //return <div> Hello React </div>;
+                
+            }
+
+            //this is the React DOM library responsible for rendering the JSX. 
+            //first argument is the component to render and the second argument 
+            //is where we wish the react component to show up. In this playground 
+            //we are using a "mountNode" display element
+            ReactDOM.render(
+                return React.createElement(Hello, null),
+                //<Hello/>, 
+                //you can think of this as entry point for react
+                document.getElementById('mountNode')); 
+
+         /*===============================
+         # Module 2: Your First React Hook
+         #============================== */     
+          
+            - https://app.pluralsight.com/course-player?clipId=7d01d77c-4d97-4b3f-bb12-b4cc512e4a98
+
+            /*==================================================
+            Example 1: Using a function invoked from onClick()       
+            ==================================================*/    
+              
+
+                function logRandom(){ console.log(Math.random())};
+                
+                //Function only returns value. in this case useState returns an array. 
+                //useState array contains two elements: a state object (in this case counter)
+                //and an updater function - in this case setCounter.
+                //to capture the values of the setter and getter, React uses JavaScript "destructuring"
+                //feature to capture the values to the variables - counter and setCounter 
+                function Button(){
+                    const [counter, setCounter] = useState(0);
+                    return <button onClick={logRandom}> {counter}
+                        </button>;
+                }
+            
+                //Using inline function
+                function Button(){
+                    const [counter, setCounter] = useState(0);
+                    return <button onClick={ 
+                            function logRandom() {
+                            console.log(Math.random());
+                                }
+                            } > {counter}
+                            </button>;
+                }
+
+                //Using arrow function
+                Button(){
+                    const [counter, setCounter] = useState(0);
+                    return <button onClick={() =>   
+                            console.log(Math.random())} > {counter}
+                            </button>;
+                }
+                
+            
+                3. Another example of Using arrow function 
+                function Button(){
+                    const [counter, setCounter] = useState(0);
+                    return <button onClick={() =>   
+                            setCounter(counter + 1)}> {counter}
+                            </button>;
+                }
+
+
+                5. Using state hook to update the browser. Whenever the button is clicked
+                the browser automatically updates the button
+                        
+                    function Button(){
+                    const [counter, setCounter] = useState(0);
+                    return <button onClick={() => setCounter(counter+1)}> {counter} </button>;
+                        
+                }
+
+
+                ReactDOM.render(
+                <Button />,
+                document.getElementById('mountNode')
+                )
+
+
+        /*#===============================
+         # Your first one way dataflow
+         #==============================*/
+         https://app.pluralsight.com/course-player?clipId=6dc898f9-ba32-4047-a32b-e9e36fbaf6af
+     
+         https://jsdrops.com/
+         https://jsdrops.com/rgs1.4
+
+        1. Best practice in writing code see:
+         Start: https://jsdrops.com/rgs1.4
+         For final solution: See https://jsdrops.com/rgs1.5
+
+         - best practoce don't put code in one line. see example 
+           below
+         
+         
+            //Note: all function components by convention receive "props" even if the function 
+            //doesn't have the param "props 
+            function Button(props) {
+	            return ( 
+                  <button onClick={props.onClickFunction}>
+                     + {props.increment}
+                 </button>
+              );
+            }
+
+   
+           //Define another component whose sole responsibility is to display the 
+            //value of the counter. It will not have it's own state.
+            //we are using parentheses after return because we are returning a 
+            //function call, remember, a React.createElement function call.
+
+            //since we are passing a prop to display in line 136, add a param here called "props"
+            //you can call it any name you want but usually it is named "props" thats the convention
+
+            //This "props" object will have a key-value pair for each attribute
+            function Display(props){
+                 return (  
+                   //Access the "message" attribute in the props
+                   <div>{props.message} </div>
+                 );
+            }
+        
+        //Simplify rendering by creating a new component called App
+        //within App return a DOM tree that contains <button/> amd <displa/> components
+
+        function App()
+        {
+           /*move the state hook here so that Button and Display components can access it
+           via prop */
+            const [counter, setCounter] = useState(42);
+            //add function to increment counter 
+            const incrementCounter = () => setCounter{counter +1};
+            return(
+                <div>
+                  //props can also pass function.
+                  // 1. Pass a prop {incrementCounter} to Button component  
+                  // will pass "incrementCounter" function
+                  // 2. Pass another prop "increment={5} to be used by Button component
+                  <Button onclickFunction={incrementCounter} increment={5}  />
+                  //pass a prop and name it message
+                  <Display message{counter} />
+                </div>
+            );
+        }
+
+        //render App
+        ReactDOM.render(
+         <App />,  
+           document.getElementById('mountNode'),
+        );
+          
+        #==========================================
+        # Another way of rendering components.
+        # <> is a rmpty tag  to <React.Fragment> the 
+        # of which is declare a parent without rendering
+        # another DOM Div parent
+        #=========================================
+         ReactDOM.Render (
+             <>
+              <Button />
+              <Display />
+             </>
+         )
+
+      2. Component Reusability  
+          
+          - https://app.pluralsight.com/course-player?clipId=bd8fbe5b-125c-482b-bbd1-4f11b2d87c2f
+
+          - Start: https://jsdrops.com/rgs1.5
+          
+          - Final solution see: https://jsdrops.com/rgs1.6
+
+          function Button(props) {
+            //access the "increment" property of Button component and pass it to props.onclick functiom
+            const handleClick = () => props.onClickFunction(props.increment);
+            return (
+             // make props.incrementValue as a reference to make so that the value can be referneced 
+             // <button onClick={props.onClickFunction(props.incrementValue)}> 
+
+             //this is a better version
+              <button.onClick={handleClick}>
+               //access the "increment" property of Button component
+               +{props.increment}
+            </button>
+        );
+        }
+
+        function Display(props) {
+            return (
+            <div>{props.message}</div>
+        );
+        }
+
+        function App() {
+            const [counter, setCounter] = useState(0);
+            const incrementCounter = (incrementValue) => setCounter(counter+incrementValue);
+            return (
+            <div>
+            //button component pass another PROP called  "increment" value and the Button component 
+            //will use that value instead of the hard-coded one making Button 
+            //component more generic. Use bracket so that the value will be treated 
+            //as numeric.
+            //NOTE: "increment" is a property of Button component
+            // "incrementCounter is a function we are passing to the Button component
+            <Button onClickFunction={incrementCounter} increment={1} />
+            <Button onClickFunction={incrementCounter} increment={5} />
+            <Button onClickFunction={incrementCounter} increment={10} />
+            <Button onClickFunction={incrementCounter} increment={100} />
+            <Display message={counter}/>
+            </div>  
+        );
+        }
+
+        ReactDOM.render(
+        <App />, 
+        document.getElementById('mountNode'),
+        );
+
+        // *** The React 18 way:
+        // root.render(
+        //   <App />,
+        // );
+
+      3. Reconciliation in Action
+        - https://app.pluralsight.com/course-player?clipId=b7748658-8609-49e9-95cf-a9b11c60a115
+ 
+        - Start: https://jsdrops.com/rgs1.7
+          Final solution: See https://jsdrops.com/rgs1.8
+
+
+        - Why react only re-renders only the changes made to teh DOM not the wqhole DOM?
+            (1) because RFeact maintains a copy of the latest image of the DOM in-memory 
+            (2) when a change is made to the browser, react creates another version of the DOM 
+                in-memory 
+            (3) react compares the old and the latest version of the DOM stored in-memory 
+                and only updates those elements that actually have changed.
+
+        #create a component called "render"
+        const render = () => {
+            document.getElementById('mountNode').innerHTML = `
+                <div>
+                Hello HTML
+                <input />
+                <pre>${(new Date).toLocaleTimeString()}</pre>
+                </div>
+            `;
+
+        ReactDOM.render(
+            React.createElement(
+            'div',
+            null,
+            'Hello React',
+            React.createElement('input', null),
+            React.createElement('pre', null, (new Date).toLocaleTimeString())
+            ),
+            document.getElementById('mountNode2')
+        );
+        };
+
+        //display current time
+        //currentTime: (new Date).toLocaleTimeString()
+
+        //Invoke the "render component" every second
+        setInterval(render, 1000);
+
+      4. Wrap UP - review this  
+          - https://app.pluralsight.com/course-player?clipId=60ff4975-9869-49a5-9444-b80917e42774
+
+          - a react app is a set of compoments 
+          - a commponent is lke a function. it takes input and it outputs a dewcription to
+            a user-interace in the form of react elements 
+
+          - ReactDOM library enanles us to render those React elements in the browser and 
+            will re-render them for us automatically when their in-memory state changes.
+
+          - react enables us to write react elements by using a special syntaxcalled JSX 
+
+          - JSX is pre-transformed to valid react-api calls before sending it to the browser
+
+          - props passed to a component cannot be changed inside the component 
+
+          - components can change its own state.
+
+          - ReactDOM.render is the syntax to mount React component.
+              ReactDOM.render(
+              <App />, 
+               document.getElementById('mountNode'),
+              );
+
+=======================================
+Module 3: Modern Javascript Crash Course
+=======================================
+   - https://app.pluralsight.com/course-player?clipId=33576060-1095-45c6-a311-4988b32e8736
+
+   - https://jscomplete.com/learn/beginner 
+
+   - https://jscomplete.com/learn/complete-intro-modern-javascript  (The complete introduction to modern javascript)
+  -
+
+   1. Variable VS Block Scope 
+       - https://app.pluralsight.com/course-player?clipId=da41fcd8-029c-4381-9de5-5648694e01e2
+
+       - use let to declare variables in block scope instead of var - such as in for loop
+           - https://jscomplete.com/playground/scopes
+
+       - use var to declare variables in function scope
+             
+             
+              function sum(a, b) {
+                // Function Scope
+                var result = a + b;
+              }
+
+        - use "let" to define variables in block scope 
+     
+          //if let is use, the variable cant be accessed outside the block scope
+          for (var i = 1; i <= 10; i++) {
+                // Block Scope
+           }
+           i;  //i can sbe accessed even it is outside the block scope
+          
+           //if let is use, the variable cant be accessed outside the block scope 
+          for (let i=1; i<=10; i++)
+            {
+                
+            }
+            i;  //this will generate an error because it is outside of block scope already
+           
+
+       - use "const" when the reference to assigned to the variable is mmeant to constant
+         https://app.pluralsight.com/course-player?clipId=da41fcd8-029c-4381-9de5-5648694e01e2
+
+       - https://jscomplete.com/playground/const
+   
+           // Scalar values
+          const answer = 42;
+          const greeting = 'Hello';
+
+          // Arrays and Objects
+          const numbers = [2, 4, 6];
+          const person = {
+            firstName: 'John',
+            lastName: 'Doe',
+          };
+
+   2. Arrow Functions 
+       - https://app.pluralsight.com/course-player?clipId=fbfb89c5-54c4-4d8f-aa7a-baa22365cf87
+
+       - https://jscomplete.com/playground/arrow-vs-regular-functions
+
+       - ARROW FUNCTION DOES NOT CARE WHO CALLS IT. SO THE "THIS" KEYWORD BINDS (OR CLOSE)THE VALUE TO THE 
+         SCOPE AT THE TIME IT WAS DEFINED. THIS MAKES IT GREAT FOR DELAYED FUNCTION EXECUTION CASES 
+         LIKE EVENTS AND LISTENRS BECAUSE IT GIVES ACCESS TO THE defining ENVIRONMENT NOT THE CALLING ENVIRONEMNT
+
+       - FUNCTION DOES CARE WHO CALLS IT. SO THE "THIS" KEYWORD BINDS (OR CLOSE) THE VALUE TO ITS CALLER.
+         IF NO CALLER, THE VALUE WILL BIND TO THE CALLING ENVIRONMENT - WHICH IS ITS GLOBAL WINDOW OBJECT
+
+
+          const X = function() {
+            // "this" here points is the caller of X
+          };
+
+          NOTE: () is meant to hold arguments to the arrow function
+          const Y = () => {
+            // "this" here does not point to the caller of Y
+            // It's the same "this" found in Y's scope
+          };
+
+          Notes:            
+              Regular functions give access to their "calling" environment while arrow functions give 
+            access to their "defining" environment 
+           
+             The value of the "this" keyword inside a regular function depends on HOW the function
+            was CALLED (the OBJECT that made the call).
+            
+              The value of the "this" keyword inside an arrow function depends on WHERE the function 
+            was DEFINED (the SCOPE that defined the function).
+            
+           
+
+          // console.log(this);
+
+          const testerObj = {
+            func1: function() {
+              console.log('In func1', this);
+            },
+
+            func2: () => {
+              console.log('In func2', this);
+            }
+          };
+
+          testerObj.func1();
+          testerObj.func2();
+
+          // const square1 = (a) => {
+          // 	return a * a;
+          // };
+          // const square2 = (a) => a * a;
+          // const square3 = a => a * a;
+
+          display.log([1, 2, 3, 4].map(a => a * a));
+
+   3. Object and Literals
+      - https://jscomplete.com/playground/object-literals
+
+      - https://app.pluralsight.com/course-player?clipId=eb185a8d-d7e1-49f5-9896-4264f5fad383
+
+           /*
+                const obj = {
+                  key: value
+                };
+          */
+
+          const mystery = 'answer';
+          const InverseOfPI = 1 / Math.PI; //variable
+
+          //this is how you create lieral objwect in javascript
+          //OBJECTS ARE VERY POPULAR IN JAVASCRIPT. THEY ARE USED 
+          //TO MANGED AND COMMUNCATE DATA AND USING THESE FEATURES WILL MAKE THE CODE 
+          //A BIT SHORTER AND EASIER TO READ
+          const obj = {
+            p1: 10,  //creating a property
+            p2: 20,  //creating a property
+            f1() {},  //defining a property that holds a function
+            f2: () => {}, //defining a property thwt holds an arrow a function
+            [mystery]: 42, //modern object literal supports dynamic properties using the [] syntax
+                           //it looks like an array literal, but dont confuse it with that
+            InverseOfPi: InverseOfPi, //if we have a variable called InverseOfPi 
+                                     //and we want it to be part of object literal
+           };
+
+          console.log(obj);
+
+   4. Destructuring and Rest/Spread 
+       - https://jscomplete.com/playground/destructuring
+       - https://app.pluralsight.com/course-player?clipId=4f578014-8fa2-45cc-8203-bb0432550d2c
+
+        (1) DESTRUCTURING
+             //destructure Math.PI components to three properties
+             const PI = Math.PI;
+             const E = Math.E;
+             const SQRT2 = Math.SQRT2;
+
+            //equivalent to the above
+            const {PI, E, SQRT2}  = Math;
+
+            // destructure React API into three properties
+            const {Component, Fragment, useState} = require('react');
+
+            // after the above line I can use  useState() directly like this:
+            useState();
+
+            //destructuirung also works in function arguments if the 
+            //argument passed is an "object"
+             const circle = {
+               label: 'circleX',
+               radius: 2,
+             };
+
+             console.log(circle);
+
+             Example 1: Call circleArea1() function (which has 1 argument)
+             //here we have a circleArea function which expect an object as its 
+             //argument, AND IT EXPECTS THAT OBJECT TO TO HAVE A "radius" and 'precision" properties.
+
+             //In this example we are destructuring/exracting the RADIUS property out of the object "circle"
+             //and using it locally in the function (see the function call below)
+             const circleArea1 = ({radius}) =>
+               (PI * radius * radius).toFixed(2);
+
+            //Call the circleArea1() function
+             console.log(
+               circleArea1(circle)
+             );
+
+             Example 2: Call circleArea2() function (which has 2 arguments)
+
+             const circleArea2 = ({radius}, {precision = 2} = {}) =>
+               (PI * radius * radius).toFixed(precision);
+           
+             //Here we have circleArea2 function that expect two arguments: 
+             //  1. an object literal 
+             //  2. and a variable called precision
+             
+             console.log(
+               circleArea2(circle, { precision: 5 })
+             );
+
+            
+            //Example 3: 
+            //destructuring an array, skipping the third element. it is useful 
+            //when combined witht REST operator
+             const [first, second,, forth] = [10, 20, 30, 40];
+             console.log (first);
+             console.log(second);
+             console.log(forth)
+ 
+
+            //Example4: 
+            //this tells javascript to extract only the first element in the array
+            //and create a new array called "restItems" to store the remaining 
+            //element os the original array whic is going to be: 20, 30, 40
+            const [col1, ...restOfItems] = [10,  20, 30, 40];
+            
+            console.log(col1);
+            console.log(restOfItems);
+
+        
+
+
+        (2 )Destructuring with REST Operator 
+            //https://jsdrops.com/rest-spread
+            https://app.pluralsight.com/course-player?clipId=4f578014-8fa2-45cc-8203-bb0432550d2c
+           
+
+            const data = {
+              temp1: '001',
+              temp2: '002',
+              firstName: 'John',
+              lastName: 'Doe',
+            };
+
+            //CREATE AN NEW OBJECT FROM "DATA" without temp1 and temp2
+            //then use the "rest" operator (... three dots) to get the remaining properties into
+            //a new object called "person". Use the three dots to spread one array or objet into 
+            //a new array or object.
+            //It is useful for copying arrays and objects
+            const {temp1, temp2, ...person} = data;
+
+        
+            //example spread items in an array into a new array
+            const [first, ...restOfItems] = [10, 20, 30, 40];
+            console.log(first);
+            console.log(restOfItems);
+
+            //newArray in this example is a copy of restOfItems array we destructure above
+            const newArray = [...restOfItems];
+
+           //you can also spread the key-value paiurs of an object. The newObject will be 
+           //a copy of person object
+            const newObject = {
+              ...person
+            }
+
+         ()
+
+        (3) Template Strings
+            - https://jsdrops.com/template-strings 
+            - https://app.pluralsight.com/course-player?clipId=2ac3e220-8a18-4450-a891-d0b6e0d1e696
+
+            Example:
+              const greeting = "Hello World"; - double quote is one way of defining string
+
+              const answer = 'Forty Two';  - single quote is another way of defining string
+
+              /*Backtick or template string is the third and new way of defining string
+              Strings defined with a bactick is called template string because they 
+              can be used as a template with "dynamic VALUES". They support what we call 
+              interpolation (like angular one-way binding) using a pair of bracket prefix with
+              dollar sign. Example ${}
+              const html = `
+                <div>
+                  ${Math.random()}
+                </div>
+              `;
+
+        (4) Classes
+           - https://jsdrops.com/classes
+           - https://app.pluralsight.com/course-player?clipId=ae30c650-f461-46ce-899f-de54e93ca3a3
+           - Example:
+                
+                Note: A class in javascript is a template or blueprint for you to define 
+                     shared structure and behavior between similar object. Ex. Person class 
+                     inherited and to create a "Student": class
+                class Person {    
+                  constructor(name) {
+                    this.name = name;
+                  }
+
+                  greet() {
+                    console.log(`Hello ${this.name}!`);  // ${this.name} is a template string. Note the backtick
+                  }
+                }
+
+                NOTE; Inherit a Person class using extends and then create a new class student
+                      The new class can must have the value constructor of the base class
+                      and new constructors needed by the student class in this case "level"
+                class Student extends Person {
+                  constructor(name, level) {
+                    super(name);
+                    this.level = level;
+                  }
+                  greet() {
+                    console.log(`Hello ${this.name} from ${this.level}`);
+                  }
+                }
+
+                const o1 = new Person("Max");
+                const o2 = new Student("Tina", "1st Grade");
+                const o3 = new Student("Mary", "2nd Grade");
+                o3.greet = () => console.log('I am special!');
+
+                o1.greet();
+                o2.greet();
+                o3.greet();
+
+        (5) Promises and Async/Await
+             - https://app.pluralsight.com/course-player?clipId=984842c4-aa6a-4997-8310-2e58ab35d747
+             - https://jsdrops.com/promises
+
+             Example 1:
+                  Note: When working with async operations usually you have to deal with
+                      promise objects. A promise is an "OBJECT" that might deliver data at a 
+                      later point in the program.
+
+                      "web fetch API" is an example of an async function that returns a promise that's 
+                      available in some browsers. In the example below we are fetchin information
+                      from the top-level GITHUB API. Since fetch returns a "promise", to consume 
+                      that promise, we do at dot then call .then and supply a callback function: 
+                       
+                         resp => {
+                           resp.json().then(data => {  //data returned by fetch is raw data. so we need to parse it with 
+                                                       //resp.json() which is another async function so with need another .then
+                           console.log(data);
+                        });
+                         }
+
+                 const fetchData = () => {
+                   fetch('https://api.github.com').then(resp => {
+                     resp.json().then(data => {
+                       console.log(data);
+                     });
+                   });
+                 };
+
+              
+              Example 2: Modern way of processing promise object by using Async/Await.
+                         We need to label the function as async. 
+                         The await is a way to fetch data without using do then .then call
+                const fetchData = async () => {
+                  const resp = await fetch('https://api.github.com');  //await returns the reponse object which is a RAW object
+                  const data = await resp.json(); //parse the RAW data using json() so we need another await
+                  console.log(data); //finall use the parsed datq
+                };
+
+                fetchData();
+
+========================================
+Module 4: The Github Cards App
+========================================
+  - https://app.pluralsight.com/course-player?clipId=e0b02401-4ed7-4106-82fd-af01c6792bfb
+  - demo is in"C:\_AMainDemos\DemoCT205-React-Getting-Started-Buna\Notes-React17-Getting-Started.txt"
+
+  - What arw we building  
+      - https://app.pluralsight.com/course-player?clipId=e0b02401-4ed7-4106-82fd-af01c6792bfb
+      - WORKING WITH DATA
+
+  =================================    
+  1.  Read Class Component 
+  =================================
+      - see jsdrops.com/rgs2.1 --> https://jscomplete.com/playground/rgs2.1
+      - https://app.pluralsight.com/course-player?clipId=13607484-3d3e-4f9e-b959-577edaf3ec1b
+
+      - EXAMPLE - The Github Cards
+ 
+      - see jsdrops.com/rgs2.2 for completed code - https://jscomplete.com/playground/rgs2.2
+
+      - using ClaSS to create component -https://app.pluralsight.com/course-player?clipId=13607484-3d3e-4f9e-b959-577edaf3ec1b
+
+          /*Create Card Component*/
+          class Card extends React.Component{
+             render() {
+              /*A class must have a render function */
+                return(
+                  <div className="github-profile"> 
+                      <img src="https://placehold.it/75" />
+                      <div className="info">
+                         <div className="name">Name here...</div>
+                         <div className="company">Company here...</div>
+                      </div>
+                  </div>
+                );
+             }
+          }
+
+          /*Create App component */
+          class App extends React.Component {
+              //must have constructor 
+              //must have concept of "this"
+
+              /* MUST HAve a render function - returns the vittual dom of your component
+               Render function is the only function required in a class component
+               Instead of receiving Props as arguments, class component both the props and the state 
+               are managed on an instance of the class.
+               now that we arre usinfg class, we are creating instances of them, an each instance gets it
+               props and state. so props such as {title} shown below need to have "this" which meand this instance 
+              */
+              render() {
+                  return (
+                    <div>
+                        <div className="header"> {this.props.title} </div>
+                        
+                        <Card />
+                    </div>
+                   
+                 );
+              }
+          }
+
+          ReactDOM.render(
+             <App title="The Github Cards App" />,
+             mountNode,
+          );
+
+  ===================================
+  2. Styling React components
+  ===================================
+       - https://app.pluralsight.com/course-player?clipId=a2f0fcad-e991-4c02-b0a4-9343277b2779
+
+       - see jsdrops.com/rgs2.2 for completed code 
+
+       - Example Styling
+         /*Create Card Component*/
+          class Card extends React.Component{
+             render() {
+               
+                return(
+                  /*we can use javascript "style{{}}". this is not the CSS style
+                    style{{}} is an object literal. Javascript style is excelent 
+                    for conditional styling
+                  */
+                  <div className="github-profile" style={{margin: '1rem'}}> 
+                      <img src="https://placehold.it/75" />
+                      <div className="info">
+                         <div className="name">Name here...</div>
+                         <div className="company">Company here...</div>
+                      </div>
+                  </div>
+                );
+             }
+          }
+
+          /*Create App component */
+          class App extends React.Component {
+              
+              render() {
+                  return (
+                    <div>
+                        <div className="header"> {this.props.title} </div>
+                        
+                        <Card />
+                    </div>
+                   
+                 );
+              }
+          }
+
+          ReactDOM.render(
+             <App title="The Github Cards App" />,
+             mountNode,
+          );
+
+
+  ===================================
+  3. Working with Data 
+  ===================================
+      - https://app.pluralsight.com/course-player?clipId=8d1769a6-cfd3-4005-ad39-2cd013618cde
+      - see jsdrops.com/rgs2.3 for completed code - https://jscomplete.com/playground/rgs2.3
+
+      - data source = https://api.github.com/users/gaearon
+
+      - Example 1: Using TestData
+           /*
+          const testData = [
+              {name: "Dan Abramov", avatar_url: "https://avatars0.githubusercontent.com/u/810438?v=4", company: "@facebook"},
+              {name: "Sophie Alpert", avatar_url: "https://avatars2.githubusercontent.com/u/6820?v=4", company: "Humu"},
+              {name: "Sebastian Markbåge", avatar_url: "https://avatars2.githubusercontent.com/u/63648?v=4", company: "Facebook"},
+          ];
+        */
+
+         /*Create CardList component using functions.
+            The cardlist function component will receive standard 
+            propd argument and let us make it return a <div> that will 
+            hold our list of cards and returs a "Card" component.
+            We need to change the App component to render CardList 
+            instead of the Card
+         */
+         const CardList = (props) =>(
+              <div> 
+               <Card />
+              </div>
+         );           
+
+          /*Create the Card component using class */
+          class Card extends React.Component {
+            render() {
+              /*Inside the render function, create variable and grab the First
+                element of the testdata arrays
+              */
+              const profile =testData[0];
+              return (
+                <div className="github-profile">
+                  <img src={profile.avatar_url} />
+                  <div className="info">
+                    <div className="name">{profile.name}</div>
+                    <div className="company">{profile.company}</div>
+                  </div>
+                </div>
+              );
+            }
+          }
+
+          /*Create App component */
+          class App extends React.Component {
+            render() {
+              return (
+                <div>
+                  <div className="header">{this.props.title}</div>
+                  <CardList />
+                </div>
+              );
+            }	
+          }
+
+          ReactDOM.render(
+            <App title="The GitHub Cards App" />,
+            mountNode,
+          );
+
+      - Example 2: Making the component reusable by using spread operator
+         - see jsdrops.com/rgs2.4
+
+         /*Create CardList component using functions.
+            The cardlist function component will receive standard 
+            prop argument and let us make it return a <div> that will 
+            hold our list of cards and returs a "Card" component.
+
+            To make this dynamic (not using hard-coded array)
+            take the "prop" and spread it inside the Card compnent
+            like this: {testData.map(profile => <Card {...profile}/>)}.
+
+            Map function here is  javascript function that you can invoke On
+            arrays which produces another array. In this example map takes 
+            an array of testData and map it into another array called "profile".
+            It takes an anonymous function as an argument. And then it uses this
+            function to convert one array into another array using return
+             values in the function
+
+             SO this map line is converting testData object into something like this: 
+             [<Card />, <Card />, <Card />] - an arrY OF cARDS ELEMENTS BECAUSE IT'S 
+             RETURNING CARD ELEMENT INSIDE IT'S FUNCTION. AND AN ARRAY OF CARD ELEMENTS
+             IS JUST AN ARRAY OF "React.create element calls like this: 
+               [React.createElement(), React.createeleemtn(), React.createElement()]
+             and ReaCT is ok with that, React understands arrays.
+         */
+        const CardList = (props) =>(
+               <div> 
+                   {testData.map(profile => <Card {...profile}/>)}
+                  //<Card {...testData[0]}/>
+                  // <Card {...testData[1]}/>
+                </div>
+            );      
+        /*Create the Card component using class */
+         class Card extends React.Component {
+                    render() {
+                      /*
+                         the variable const profile  = this.props; in the code below, 
+                         comes from the instantiated Card component in line 799
+                      */
+                      const profile = this.props;
+                      return (
+                        <div className="github-profile">
+                          <img src={profile.avatar_url} />
+                          <div className="info">
+                            <div className="name">{profile.name}</div>
+                            <div className="company">{profile.company}</div>
+                          </div>
+                        </div>
+                      );
+                    }
+                  }
+
+
+        /* Create App component */
+        class App extends React.Component{
+            render(){
+              return(
+                <div>
+                  <div className="header"> {this.props.title} </div>
+                  <CardList />
+                  </div>
+              )
+              
+            }
+        }
+
+          ReactDOM.render(
+              <App title="The GitHub Cards App" />,
+              mountNode,
+            );
+
+  ===================================
+  4. Initializing and Reading the 
+     State and creating a Form
+  ===================================
+      - https://app.pluralsight.com/course-player?clipId=846d24be-6429-47d9-9a66-88a55d3b2ff9
+      - jsdrops.com/rgs2.5
+
+      - Example 4A - Initializing and Reading a State:
+          
+            const testData = [
+                {name: "Dan Abramov", avatar_url: "https://avatars0.githubusercontent.com/u/810438?v=4", company: "@facebook"},
+                {name: "Sophie Alpert", avatar_url: "https://avatars2.githubusercontent.com/u/6820?v=4", company: "Humu"},
+                {name: "Sebastian Markbåge", avatar_url: "https://avatars2.githubusercontent.com/u/63648?v=4", company: "Facebook"},
+            ];
+
+
+          const CardList = (props) =>(
+               /*
+                 read from the props.profile instead of testData global variable
+               */
+               <div> 
+                   {props.profiles.map(profile => <Card {...profile} />)}
+                </div>
+            );      
+         /*Create the Card component using class */
+          class Card extends React.Component {
+                     render() {
+                      /*
+                         the variable const profile  = this.props; in the code below, 
+                         comes from the instantiated Card component in line 799
+                      */
+                      const profile = this.props;
+                      return (
+                        <div className="github-profile">
+                          <img src={profile.avatar_url} />
+                          <div className="info">
+                            <div className="name">{profile.name}</div>
+                            <div className="company">{profile.company}</div>
+                          </div>
+                        </div>
+                      );
+                    }
+                  }
+
+        /* Create a Form.
+           Return a form control
+        */
+
+        class Form extends React.Component{
+           render(){
+             return(
+                <form action="">
+                   <input tye="text" placeholder="Github username"/> 
+                   <button> Add Card </button> 
+                 </form>
+             );
+           }
+        }
+
+        /* Create App component
+           Add the form component in the App as sibling of CardList 
+           component. 
+           To avoid reading global variable (e.g testData)
+           create a prop called "profile" and initialize it from testData
+           like this:  <CardList profiles={testData}
+           Tend change Cardlist to read from the prop called profile
+         */
+        class App extends React.Component{
+            render(){
+              return(
+                <div>
+                  <div className="header"> {this.props.title} </div>
+                  <Form />
+                     <CardList profiles={testData} />
+                  </div>
+              )
+              
+            }
+        }
+
+          ReactDOM.render(
+              <App title="The GitHub Cards App" />,
+              mountNode,
+            );
+
+      - Example 4B: Managing state (Very Important)
+         /* 
+            Now since we want react to re-render the CardList component every time
+            a new record is ADDED  to this profile's array, the easist way to trigger 
+            this re-render: 
+               1.  is to place the profiles array on the special state object
+               2. after that all we need to do is just add a new record to the array
+                  and react will react and reflect the new change in the UI
+               3. Since profiles array is only used by theCardList components,
+                  we can manage the state of the profiles in the CardList component 
+                  itself.
+               4. But remember that the Form component will need to append a record to 
+                  this "profiles" array and it can't do that if the owner is it's 
+                  sibling the "CardList" component.
+
+               5. to Allow both CardList and the Form component to access the profiles array,
+                  we should put it on the state of the top-level component which is 
+                  the "App" Component. 
+
+               6. Note that in the App component the state is also managed on the 
+                  inn-memory instance that React associates with every mounted component. 
+                  To initialize a state object for the app component, we need to to tap into 
+                  native class constructor method which get called for every instamtiated object
+                  like this:   
+                       constructor() { }
+         */
+
+            const testData = [
+                {name: "Dan Abramov", avatar_url: "https://avatars0.githubusercontent.com/u/810438?v=4", company: "@facebook"},
+                {name: "Sophie Alpert", avatar_url: "https://avatars2.githubusercontent.com/u/6820?v=4", company: "Humu"},
+                {name: "Sebastian Markbåge", avatar_url: "https://avatars2.githubusercontent.com/u/63648?v=4", company: "Facebook"},
+            ];
+
+
+          const CardList = (props) =>(
+               /*
+                 read from the props.profile instead of testData global variable
+               */
+               <div> 
+                   {props.profiles.map(profile => <Card {...profile} />)}
+                </div>
+            );      
+
+         /*Create the Card component using class */
+          class Card extends React.Component {
+                     render() {
+                      /*
+                         the variable const profile  = this.props; in the code below, 
+                         comes from the instantiated Card component in line 799
+                      */
+                      const profile = this.props;
+                      return (
+                        <div className="github-profile">
+                          <img src={profile.avatar_url} />
+                          <div className="info">
+                            <div className="name">{profile.name}</div>
+                            <div className="company">{profile.company}</div>
+                          </div>
+                        </div>
+                      );
+                    }
+                  }
+
+        /* Create a Form.
+           Return a form control. for the form to show in the browser
+           we need to include it in what we are rendering. In this case
+           the correct place to include it is in the APP Component - see lines 1067-10xxx
+        */
+
+        class Form extends React.Component{
+           render(){
+             return(
+                <form action="">
+                   <input tye="text" placeholder="Github username"/> 
+                   <button> Add Card </button> 
+                 </form>
+             );
+           }
+        }
+
+        /* Create App component
+           Add the form component in the App as sibling of CardList 
+           component. 
+          
+         */
+
+        class App extends React.Component{
+           /*
+              The state is also managed on the in-memory instance that react associates with 
+              every mounted component.
+              To initialize a state object for the app component, we need to to tap into 
+              native class constructor method which get called for every instamtiated object. 
+              This special constructor method receives the instance props as well. It has
+              to call the "super" javascript method. Super gets called for every instantiated object.
+              This super method is needed to 
+              honor the link betwee the APP class and the class that it extends from,
+              React.Component.
+           */
+
+            constructor(props) {
+             /*you shoudl also pass the instance "props" object to the super method
+               Once inside the constructor, we have access to the special state
+               object that React manages for each class component. We do that by 
+               this.state = {}; Unlike useState in function componentss, 
+               this state instance property has to be an object in class components,
+
+             */
+
+             super(props);
+
+             this.state = {
+               /* now we can place the profiles arraY DIRECTLY WITHIN THIS OBJECT. 
+                  It starts as an empty array profiles:[]. but we are testing with 
+                  our data, so let's just init it with testData. To read this new 
+                  state element in the CardList compoent because it needs it    
+                  by doing cardList profiles=this.state.profiles />           
+                */
+               profiles: testData,
+             }
+
+            }
+
+            render(){
+              return(
+                /*
+                  To avoid reading global variable (e.g testData)
+                  create a prop called "profile" and initialize it from testData
+                  like this:  CardList profiles=testData
+                  
+                  The question is which component should hold this new state so we can 
+                  manage the state of "profiles in the Cardlist. But the Form will also 
+                  need to append added record to this profile array but it is not possible
+                  because FORM is a sibling of Cardlist.
+
+                  To allow the FORM and CardList to access Profile array, we should put CardList 
+                  as member of Form
+                */
+                <div>
+                  <div className="header"> {this.props.title} </div>
+                  <Form />
+                     <CardList profiles={this.state.profiles} />
+                  </div>
+              )
+              
+            }
+        }
+
+          ReactDOM.render(
+              <App title="The GitHub Cards App" />,
+              mountNode,
+            );
+
+  ===================================
+  5. Taking Input from the user 
+  ===================================
+    - https://app.pluralsight.com/course-player?clipId=43aac0ac-3fe2-43fa-a70e-bb86cc955351       
+    - jsdrops.com/rgs2.6
+
+            const testData = [
+                {name: "Dan Abramov", avatar_url: "https://avatars0.githubusercontent.com/u/810438?v=4", company: "@facebook"},
+                {name: "Sophie Alpert", avatar_url: "https://avatars2.githubusercontent.com/u/6820?v=4", company: "Humu"},
+                {name: "Sebastian Markbåge", avatar_url: "https://avatars2.githubusercontent.com/u/63648?v=4", company: "Facebook"},
+            ];
+
+
+          const CardList = (props) =>(
+               /*
+                 read from the props.profile instead of testData global variable
+               */
+               <div> 
+                   {props.profiles.map(profile => <Card {...profile} />)}
+                </div>
+            );      
+
+         /*Create the Card component using class */
+          class Card extends React.Component {
+                     render() {
+                      /*
+                         the variable const profile  = this.props; in the code below, 
+                         comes from the instantiated Card component in line 799
+                      */
+                      const profile = this.props;
+                      return (
+                        <div className="github-profile">
+                          <img src={profile.avatar_url} />
+                          <div className="info">
+                            <div className="name">{profile.name}</div>
+                            <div className="company">{profile.company}</div>
+                          </div>
+                        </div>
+                      );
+                    }
+                  }
+
+        /* Create a Form.
+           To take the input, you can add an onClick Event in
+            <button> onClick=xxx>Add Card </button> but 
+            I prefer using onSubmit event at the form level. 
+            BY using OnSubmit you can utilize native form submission 
+            features such as "required"
+        */
+
+        class Form extends React.Component{
+
+           /*define a FUNCTION TO HANDLE submit. Give an argument to 
+             handleSubmit. You can call it any name you want. "event" is 
+             commonly used
+            */
+
+           //To use "ref{} to get an ID of an element create a reference name.
+           //Ref reads the value from the DOM element- see line 1163 - 1168
+           //userNameInput = React.createRef();
+
+           //But React has another method to work with input elements which is to 
+           //control their values directly through react itself instead reading it 
+           //from the DOM. It has more advantags over using simple "ref" property
+           //Let's use it. First comment out userNameInput and  ref={this.userNameInput}
+           //Let's define a variable called "state" and init it with empty string
+           state = {userName: '' };           
+
+
+           handleSubmit = (event) => {
+              //since we want to take over the HTML submit logic, we should prevent the 
+              //default form submission
+              event.preventDefault();
+
+              //lets console log the value we grab from userNameInput. This is a ref object
+              //the value is stored in .current. This .current reference is the HTML input 
+              //element itself. We need to do .value to read the value of the input element
+              console.log(this.state.userName);
+           };
+
+           render(){
+             return(
+                //React has a special property call "ref that we can use to get a reference 
+                //to this element but we commented that out and use this.state.userName
+                //{this.state.userName} - this immediately creates what we call "CONTROLLED ELEMENT" 
+                //thats controlling the value of the input. But once a controlled element is created
+                //you can no longer type in the input textbox that's why we need to have "onChange"
+                //to tell react somenthing has change. To do that write an anonymous function
+                //onChange=event => this.setState userName: event.target.value 
+                // this.setState userName: event.target.value. this.setState passess an object that has 
+                // the new state. userName: event.target.value means grab the new value in the DOM 
+                //by using the event.target.value
+
+                <form onSubmit={this.handleSubmit}>
+                   <input 
+                      type="text" 
+                      placeholder="Github username"
+                      value = {this.state.userName}
+                      onChange={event => this.setState({userName: event.target.value})}
+                      required
+                   /> 
+
+                   <button> Add Card </button> 
+                 </form>
+             );
+           }
+        }
+
+        /* Create App component
+           Add the form component in the App as sibling of CardList 
+           component. 
+          
+         */
+
+        class App extends React.Component{
+           /*
+              The state is also managed on the in-memory instance that react associates with 
+              every mounted component.
+              To initialize a state object for the app component, we need to to tap into 
+              native class constructor method which get called for every instamtiated object. 
+              This special constructor method receives the instance props as well. It has
+              to call the "super" javascript method. Super gets called for every instantiated object.
+              This super method is needed to 
+              honor the link betwee the APP class and the class that it extends from,
+              React.Component.
+           */
+
+            constructor(props) {
+             /*you shoudl also pass the instance "props" object to the super method
+               Once inside the constructor, we have access to the special state
+               object that React manages for each class component. We do that by 
+               this.state = {}; Unlike useState in function componentss, 
+               this state instance property has to be an object in class components,
+
+             */
+
+             super(props);
+
+             this.state = {
+               /* now we can place the profiles arraY DIRECTLY WITHIN THIS OBJECT. 
+                  It starts as an empty array profiles:[]. but we are testing with 
+                  our data, so let's just init it with testData. To read this new 
+                  state element in the CardList compoent because it needs it    
+                  by doing cardList profiles=this.state.profiles />           
+                */
+               profiles: testData,
+             }
+
+            }
+
+            render(){
+              return(
+                /*
+                  To avoid reading global variable (e.g testData)
+                  create a prop called "profile" and initialize it from testData
+                  like this:  CardList profiles=testData
+                  
+                  The question is which component should hold this new state so we can 
+                  manage the state of "profiles in the Cardlist. But the Form will also 
+                  need to append added record to this profile array but it is not possible
+                  because FORM is a sibling of Cardlist.
+
+                  To allow the FORM and CardList to access Profile array, we should put CardList 
+                  as member of Form
+                */
+                <div>
+                  <div className="header"> {this.props.title} </div>
+                  <Form />
+                     <CardList profiles={this.state.profiles} />
+                  </div>
+              )
+              
+            }
+        }  //eof App component
+
+          ReactDOM.render(
+              <App title="The GitHub Cards App" />,
+              mountNode,
+            );
+
+  ===================================
+  6. Working with Ajax calls 
+  ===================================
+     - https://app.pluralsight.com/course-player?clipId=8f583202-ceab-46d0-bba8-482f0401e6a1
+     - jsdrops.com/rgs2.6
+
+     ===============================================
+     - Example 1: Making Ajax Call1 - Using Testdata and Console Log
+     ===============================================
+        /*=====================================
+        #  Example 1 Demo working with Ajax Call
+        #  Using Testdata and Console Log
+        ======================================*/
+
+        /*====================================
+        #  Test Data
+        ======================================*/
+           const testData = [
+                {name: "Dan Abramov", avatar_url: "https://avatars0.githubusercontent.com/u/810438?v=4", company: "@facebook"},
+                {name: "Sophie Alpert", avatar_url: "https://avatars2.githubusercontent.com/u/6820?v=4", company: "Humu"},
+                {name: "Sebastian Markbåge", avatar_url: "https://avatars2.githubusercontent.com/u/63648?v=4", company: "Facebook"},
+            ];
+
+   
+        /*====================================
+        #  Create Cardlist function component
+        ======================================*/
+          const CardList = (props) =>(
+               <div> 
+                   {props.profiles.map(profile => <Card {...profile} />)}
+                </div>
+            );      
+
+        /*==================================
+        #  Card component using class    
+        ====================================*/
+        class Card extends React.Component {
+          render() {
+                  /*
+                      the variable const profile  = this.props; in the code below, 
+                      comes from the instantiated Card component in line 799
+                  */
+                  const profile = this.props;
+                  return (
+                    <div className="github-profile">
+                      <img src={profile.avatar_url} />
+                      <div className="info">
+                        <div className="name">{profile.name}</div>
+                        <div className="company">{profile.company}</div>
+                      </div>
+                    </div>
+                  );
+                }
+              }
+       
+        /*==================================
+        #     Create a Form. 
+        ====================================*/
+
+        class Form extends React.Component{
+          
+           //React has another method to work with input elements which is to 
+           //control their values directly through react itself instead reading it 
+           //from the DOM. Let's use it. First define a variable called "state" 
+           //and init it with empty string
+
+           state = {userName: '' };           
+
+           //Make an API call to fetch the data of the user inputted in the input text box
+
+           handleSubmit = async (event) => {
+              event.preventDefault();
+             
+              //Make an Axios call. Axios is an asynchronous operation. It returns a promise
+              //so you have to do an await
+              //Convert https://api.github.com/users/ to template string by using backtick
+              //so that we can inject the userName inputted in the card textbox 
+              //like this: ${this.state.userName}
+                  
+              const resp = await axios.get(`https://api.github.com/users/${this.state.userName}`);
+
+              //lets console log the value from the reponse object. 
+              //you can do console log(resp) or console log(resp.data). Let us use resp.data
+              //because it will return JSON and ready to use
+
+              //Let's use the data we fetch. We need to append this data object to the
+              //profiles array that we have on the "app state". When we do that React automatically
+              //re-renders the App component
+
+              //  1. Form component (chikd of App) can't access the "profiles" state (line 1398) directly in 
+              //     the App component (parent)  because React has a one-way flow-data - meaning the child 
+              //     cannot change the state of its parent which is the "App" but remember the parent App
+              //     can sent props properties or functions to its Form child component.  
+              //  2. So go to App component and add this code:
+              //       addNewProfile = profileData => 
+              //         console.log('App', profileData) 
+              //  3. Go to App component and Pass the Form a new prop line 1426. Let's name this prop onSubmit and 
+              //     and pass it "this.addNewProfile" function. So within this handleSubmit fucntion 
+              //     of the form, we can access the new prop that became part of the Form comoponent. To do that 
+              //     we do  this.props.onSubmit(resp.data);
+            
+
+              //remember this props.onSubmit is the name of the  prop we added to 
+              //Form onSubmit=this.addNewProfile. passsing the function  addNewProfile 
+              //this function has an argument name called profileData. 
+              // so when we do this this.props.onSubmit(resp.data); 
+              // BasicALLY WE ARE CALLING addNewProfile(resp.data) meaning the value of onSubmit prop 
+              // Is addNewProfile() -- putting it another way onSubmit is a function reference to addNewProfile
+
+              this.props.onSubmit(resp.data);
+
+           };  //eof handlesubmit
+
+           render(){
+             return(
+                <form onSubmit={this.handleSubmit}>
+                   <input 
+                      type="text" 
+                      placeholder="Github username"
+                      value = {this.state.userName}
+                      onChange={event => this.setState({userName: event.target.value})}
+                      required
+                   /> 
+
+                   <button> Add Card </button> 
+                 </form>
+             );
+           }
+        }
+
+ 
+        /*====================================
+        #    Create App component
+        ====================================*/
+        class App extends React.Component{
+            constructor(props) {
+            super(props);
+            this.state = {
+               profiles: testData,
+               };
+            }
+
+            //create a function to a new record to profile array. 
+            //it will receive a parameter "profileData" as an argumentt
+            addNewProfile = (profileData) => {
+
+               console.log('App', profileData); 
+              //Instead of console log we need to put this new profileData on the state of the App Component
+              //we need to append the "profiles" object to the array of objects that we have stored 
+              //"profiles here on the state. - eg  this.state = profiles:testdata. To do taht we have few options:
+              //  1. we can invoke this.setState - we can pass an object or a function so I am going to use a function
+              // now we are ready to test. use Github usernames: gaearon, sophiebits,sebmarkbage,bvaughn
+              //this.setState(prevState => ({
+              //   profiles: [...prevState.profiles, profileData]
+              //}))
+
+             };
+
+            render(){
+              return(
+                
+                //Pass the Form a new prop line 1426. Let's name this prop onSubmit and 
+                //and pass it "this.addNewProfile" function. So in the handleSubmit fucntion 
+                //of the form, we can access the new prop that became part of the Form comoponent
+                // Note:  Form onSubmit=this.addNewProfile - we are passing a prop which is a 
+                //        function called addNewProfile
+                <div>
+                  <div className="header"> {this.props.title} </div>
+                  <Form onSubmit={this.addNewProfile} />
+                     <CardList profiles={this.state.profiles} />
+                  </div>
+              )
+              
+            }
+        } //eof App component
+       
+      
+          ReactDOM.render(
+              <App title="The GitHub Cards App" />,
+              mountNode,
+            );
+
+     ====================================================
+     - Example 2: Making Ajax Call 2 - Using Github Data
+     ====================================================
+        - completed code: jsdrops.com/rgs2.7
+
+        /*=====================================
+        #  Demo working with Ajax Call Example 2:
+        #  Using Github Data
+        ======================================*/
+
+        /*====================================
+        #  Create Cardlist function component
+        ======================================*/
+          const CardList = (props) =>(
+               //{props.profiles.map(profile => <Card {...profile} />)}
+               //add a key to the CardList. This key has to be unique in this particular DOM node.
+               //the github profile data has an id field so we can use it as a unique key.
+               <div> 
+                   {props.profiles.map(profile => <Card key={profile.id} {...profile} />)}
+                </div>
+            );      
+
+        /*==================================
+        #  Card component using class    
+        ====================================*/
+        class Card extends React.Component {
+          render() {
+                  /*
+                      the variable const profile  = this.props; in the code below, 
+                      comes from the instantiated Card component in line 799
+                  */
+                  const profile = this.props;
+                  return (
+                    <div className="github-profile">
+                      <img src={profile.avatar_url} />
+                      <div className="info">
+                        <div className="name">{profile.name}</div>
+                        <div className="company">{profile.company}</div>
+                      </div>
+                    </div>
+                  );
+                }
+              }
+       
+        /*==================================
+        #     Create a Form. 
+        ====================================*/
+
+        class Form extends React.Component{
+          
+           //React has another method to work with input elements which is to 
+           //control their values directly through react itself instead reading it 
+           //from the DOM. Let's use it. First define a variable called "state" 
+           //and init it with empty string
+
+           state = {userName: '' };           
+
+           //Make an API call to fetch the data of the user inputted in the input text box
+
+           handleSubmit = async (event) => {
+              event.preventDefault();
+             
+              //Make an Axios call. Axios is an asynchronous operation. It returns a promise
+              //so you have to do an await
+              //Convert https://api.github.com/users/ to template string by using backtick
+              //so that we can inject the userName inputted in the card textbox 
+              //like this: ${this.state.userName}
+                  
+              //Axios returns a promise
+              const resp = await axios.get(`https://api.github.com/users/${this.state.userName}`);
+
+              console.log(resp.data);
+
+              //Let's use the data we fetch. We need to append this data object to the
+              //profiles array that we have on the "app state" of App component. 
+
+              //  1. Form component (chikd of App) can't access the "profiles" state (line 1398) directly in 
+              //     the App component (parent). But remember parents (like App component) 
+              //     can sent props properties or functions to child component like Form.  
+
+              //  2. So go to App component (parent of Form). First create a new function called addNewProfile: 
+              //       addNewProfile = profileData => 
+              //         console.log('App', profileData) 
+
+              //  3. Next in the render function of the App component modify the Form component 
+              //     to pass a Prop called onSubmit and initialize it to addNewProfile function.  
+              //     So within this handleSubmit prop (which is function pointer to addNewProfile) 
+              //     we can access the new prop that became part of the Form comoponent by doing 
+              //     this.props.onSubmit(resp.data). Remember onSubmit is the pointer to addNewProfile
+              //     which requires an argument (called profileData) hence the resp.data.
+              
+              // Therefore in the following call, WE ARE CALLING this.props.addNewProfile(resp.data).
+              this.props.onSubmit(resp.data);
+
+              //reset userName to empty string after adding the new record to the profiles array.
+              this.setState({userName: ""});
+
+           };  //eof handlesubmit
+
+           render(){
+             return(
+                <form onSubmit={this.handleSubmit}>
+                   <input 
+                      type="text" 
+                      placeholder="Github username"
+                      value = {this.state.userName}
+                      onChange={event => this.setState({userName: event.target.value})}
+                      required
+                   /> 
+
+                   <button> Add Card </button> 
+                 </form>
+             );
+           }
+        }
+
+ 
+        /*====================================
+        #    Create App component
+        ====================================*/
+        class App extends React.Component{
+            constructor(props) {
+            super(props);
+            //initialize state wiht empty profiles array
+            this.state = {
+               profiles: [],
+               };
+            }
+
+            //create a function to add new record to profile array. it will receive a parameter "profileData" as an 
+            //argument. This function will concatenate the new record (called profileData) on the state object of 
+            //the App Component called profiles (see line 1593) by invoking "setState" by passing a function or 
+            //an object. We are passing a function in this example.
+
+            addNewProfile = (profileData) => {
+              //console.log('App', profileData); 
+
+              //this function will give you access to the previous state. What you return in this function 
+              //becomes the new state. So I am going to return "profiles" (see line 1593). 
+              //profiles: is populated by this statement: [...prevState.profiles, profileData]
+              //   ...prevState.profiles - means spread the existing profiles of previous state and then append 
+              //the new "profileData"
+              //now we are ready to test. use Github usernames: gaearon, sophiebits,sebmarkbage,bvaughn
+
+              this.setState(prevState => ({
+                 profiles: [...prevState.profiles, profileData]
+              }))
+
+             };
+
+            render(){
+              return(
+                //By adding a prop to Form called onSubmit with function addNewProfile as value, the Form component (child comp)
+                //will be able to execute this addNewProfile function to modify the state of the parent component.
+                <div>
+                  <div className="header"> {this.props.title} </div>
+
+                  <Form onSubmit={this.addNewProfile} />
+                     <CardList profiles={this.state.profiles} />
+                  </div>
+              )
+              
+            }
+        } //eof App component
+       
+      
+          ReactDOM.render(
+              <App title="The GitHub Cards App" />,
+              mountNode,
+            );
+
+  ========================================
+  6A. Convert Class to Function Component 
+  =======================================
+        /*=====================================
+        #  Demo working with Ajax Call Example 2:
+        #  Using Github Data (Function Component)
+        #  version
+        ======================================*/
+
+        /*====================================
+        #  Create Cardlist function component
+        ======================================*/
+          const CardList = (props) =>(
+               //{props.profiles.map(profile => <Card {...profile} />)}
+               //add a key to the CardList. This key has to be unique in this particular DOM node.
+               //the github profile data has an id field so we can use it as a unique key.
+               <div> 
+                   {props.profiles.map(profile => <Card key={profile.id} {...profile} />)}
+                </div>
+            );      
+
+        /*==================================
+        #  Card component using class    
+        ====================================*/
+        const Card {
+          render() {
+                  /*
+                      the variable const profile  = this.props; in the code below, 
+                      comes from the instantiated Card component in line 799
+                  */
+                  const profile = this.props;
+                  return (
+                    <div className="github-profile">
+                      <img src={profile.avatar_url} />
+                      <div className="info">
+                        <div className="name">{profile.name}</div>
+                        <div className="company">{profile.company}</div>
+                      </div>
+                    </div>
+                  );
+                }
+              }
+       
+        /*==================================
+        #     Create a Form. 
+        ====================================*/
+
+        const Form {
+          
+           //React has another method to work with input elements which is to 
+           //control their values directly through react itself instead reading it 
+           //from the DOM. Let's use it. First define a variable called "state" 
+           //and init it with empty string
+
+           //state = {userName: '' };           
+           const [userName, setUserName] = useState([]);
+
+           //Make an API call to fetch the data of the user inputted in the input text box
+
+           handleSubmit = async (event) => {
+              event.preventDefault();
+             
+              //Make an Axios call. Axios is an asynchronous operation. It returns a promise
+              //so you have to do an await
+              //Convert https://api.github.com/users/ to template string by using backtick
+              //so that we can inject the userName inputted in the card textbox 
+              //like this: ${this.state.userName}
+                  
+              //Axios returns a promise
+              const resp = await axios.get(`https://api.github.com/users/${this.state.userName}`);
+
+              console.log(resp.data);
+
+              //Let's use the data we fetch. We need to append this data object to the
+              //profiles array that we have on the "app state" of App component. 
+
+              //  1. Form component (chikd of App) can't access the "profiles" state (line 1398) directly in 
+              //     the App component (parent). But remember parents (like App component) 
+              //     can sent props properties or functions to child component like Form.  
+
+              //  2. So go to App component (parent of Form). First create a new function called addNewProfile: 
+              //       addNewProfile = profileData => 
+              //         console.log('App', profileData) 
+
+              //  3. Next in the render function of the App component modify the Form component 
+              //     to pass a Prop called onSubmit and initialize it to addNewProfile function.  
+              //     So within this handleSubmit prop (which is function pointer to addNewProfile) 
+              //     we can access the new prop that became part of the Form comoponent by doing 
+              //     this.props.onSubmit(resp.data). Remember onSubmit is the pointer to addNewProfile
+              //     which requires an argument (called profileData) hence the resp.data.
+              
+              // Therefore in the following call, WE ARE CALLING this.props.addNewProfile(resp.data).
+              this.props.onSubmit(resp.data);
+
+              //reset userName to empty string after adding the new record to the profiles array.
+              this.setState({userName: ""});
+
+           };  //eof handlesubmit
+
+           render(){
+             return(
+                <form onSubmit={this.handleSubmit}>
+                   <input 
+                      type="text" 
+                      placeholder="Github username"
+                      value = {this.state.userName}
+                      onChange={event => this.setState({userName: event.target.value})}
+                      required
+                   /> 
+
+                   <button> Add Card </button> 
+                 </form>
+             );
+           }
+        }
+
+ 
+        /*====================================
+        #    Create App component
+        ====================================*/
+        class App extends React.Component{
+            constructor(props) {
+            super(props);
+            //initialize state wiht empty profiles array
+            this.state = {
+               profiles: [],
+               };
+            }
+
+            //create a function to add new record to profile array. it will receive a parameter "profileData" as an 
+            //argument. This function will concatenate the new record (called profileData) on the state object of 
+            //the App Component called profiles (see line 1593) by invoking "setState" by passing a function or 
+            //an object. We are passing a function in this example.
+
+            addNewProfile = (profileData) => {
+              //console.log('App', profileData); 
+
+              //this function will give you access to the previous state. What you return in this function 
+              //becomes the new state. So I am going to return "profiles" (see line 1593). 
+              //profiles: is populated by this statement: [...prevState.profiles, profileData]
+              //   ...prevState.profiles - means spread the existing profiles of previous state and then append 
+              //the new "profileData"
+              //now we are ready to test. use Github usernames: gaearon, sophiebits,sebmarkbage,bvaughn
+
+              this.setState(prevState => ({
+                 profiles: [...prevState.profiles, profileData]
+              }))
+
+             };
+
+            render(){
+              return(
+                //By adding a prop to Form called onSubmit with function addNewProfile as value, the Form component (child comp)
+                //will be able to execute this addNewProfile function to modify the state of the parent component.
+                <div>
+                  <div className="header"> {this.props.title} </div>
+
+                  <Form onSubmit={this.addNewProfile} />
+                     <CardList profiles={this.state.profiles} />
+                  </div>
+              )
+              
+            }
+        } //eof App component
+       
+      
+          ReactDOM.render(
+              <App title="The GitHub Cards App" />,
+              mountNode,
+            );
+
+  ===================================
+  7.  Wrap up
+  ===================================
+     - to handle errors go to jscomplete.com/react-beyond-basics (very good. discusses advance stuff)
+
+========================================
+Module 5: The Star Match Game 
+========================================
+  - https://app.pluralsight.com/course-player?clipId=63738d79-4218-4d2d-9416-72356e963912
+
+  - jsdrops.com/rgs3.1 - https://jscomplete.com/playground/rgs3.1
+
+  - link to the game. Play with it. jscomplete.com/react-games/star-match
+
+  - teaches us concepts:
+     1. reaction function components
+     2. optimizing state and hooks
+
+  - thr goal of this game/app is to:
+      1. player gets a random of number of stars between 1-9
+         and also fixed set of numnbers 1-9
+      2. The goal is to use all 9 numbers 
+      3. for each random number of stars displayed when the app stars 
+         the player needs to pick one or more numbers that sum to the number of stars. 
+         For example: 
+            if 2 stars are displayed, I can pick 2 
+            if 4 stars are displayed, I have 2 options. 
+               - i can pick 4 or pick 3 plus 1
+            for 9 I have 2 options as well. I can either pick 9 or 4 plus 5
+
+         Note: While players are picking numbers, they get marked as candidate 
+               because it is not a complete answer. And if they pick more than the count 
+               of stars that are displayed, numbers get marked as wromng (color red).
+               Player can unpick these cndidates or wrong numbers to be able to pick a correct sum.
+
+               To test how it works go to: jscomplete.com/react-games/star-match to play
+
+               We will add timer to the application. Click "Play Again" butoon to reset the game.
+
+    /*======================================
+        Example1: Starting Markup
+        go to jsdrops.com/rgs3.1
+    ======================================*/
+      /* STAR MATCH - Starting Template
+         This static HTML markup is already represented as a single react component
+         these are all JSX. */
+
+      const StarMatch = () => {
+        return (
+          <div className="game">
+            <div className="help">
+              Pick 1 or more numbers that sum to the number of stars
+            </div>
+            <div className="body">
+              <div className="left">
+                <div className="star" />
+                <div className="star" />
+                <div className="star" />
+                <div className="star" />
+                <div className="star" />
+                <div className="star" />
+                <div className="star" />
+                <div className="star" />
+                <div className="star" />
+              </div>
+              <div className="right">
+                <button className="number">1</button>
+                <button className="number">2</button>
+                <button className="number">3</button>
+                <button className="number">4</button>
+                <button className="number">5</button>
+                <button className="number">6</button>
+                <button className="number">7</button>
+                <button className="number">8</button>
+                <button className="number">9</button>
+              </div>
+            </div>
+            <div className="timer">Time Remaining: 10</div>
+          </div>
+        );
+      };
+
+      /*This "colors"  object I used fout properties 
+       that represents all the statuses of any play number (e.g. available, used, wrong, candidate, etc..)
+      */
+      const colors = {
+        available: 'lightgray',
+        used: 'lightgreen',
+        wrong: 'lightcoral',
+        candidate: 'deepskyblue',
+      };
+
+
+
+      /* Utils object we have few handy functions 
+         1. That sum an array 
+         2. Create an array of numbers
+         3. Pick a random number in the range
+         4. Or pick a random sum in an array of numbers.
+      */
+
+      const utils = {
+        // Sum an array
+        sum: arr => arr.reduce((acc, curr) => acc + curr, 0),
+
+        // create an array of numbers between min and max (edges included)
+        range: (min, max) => Array.from({ length: max - min + 1 }, (_, i) => min + i),
+
+        // pick a random number between min and max (edges included)
+        random: (min, max) => min + Math.floor(Math.random() * (max - min + 1)),
+
+        // Given an array of numbers and a max...
+        // Pick a random sum (< max) from the set of all available sums in arr
+        randomSumIn: (arr, max) => {
+          const sets = [[]];
+          const sums = [];
+          for (let i = 0; i < arr.length; i++) {
+            for (let j = 0, len = sets.length; j < len; j++) {
+              const candidateSet = sets[j].concat(arr[i]);
+              const candidateSum = utils.sum(candidateSet);
+              if (candidateSum <= max) {
+                sets.push(candidateSet);
+                sums.push(candidateSum);
+              }
+            }
+          }
+          return sums[utils.random(0, sums.length - 1)];
+        },
+      };
+
+      ReactDOM.render(<StarMatch />, mountNode);
+
+
+      // *** The React 18 way:
+      // root.render(<StarMatch />);
+
+    /*=====================================
+       Module 5  Working with Static Markup
+    =====================================*/
+       - https://app.pluralsight.com/course-player?clipId=628d4bbf-c005-4bd8-b6b8-b739e082dae0
+       - avoid for loop in react
+      
+      const StarMatch = () => {
+
+        //display stars based on this value
+        //const stars = 6;
+        //make the const stars dynamic
+        //const stars = utils.random(1,9);
+
+        //better still make const stars a state. "stars" is now a state element
+        //useState(utils.random(1,9)); is the code that gives initial value to stars state element
+        //Tip: whwnever you identitfy a data eleemnt that's used in the UI and is goingto change value, you should 
+        //make it a state element
+        const [stars, setStars] = useState(utils.random(1,9)); 
+
+        return (
+          //Notes: Map() creates a  new array populated with the results and 
+          //       calling a provided function (called "callback function")
+          //       starId => <div key={starId} className="star" is the anonymous callback function
+          //       and is executed on each element of the array. "starId is the name of the new array
+
+          //left gneerates the stars
+          //right generates the buttons 1-9
+          <div className="game">
+            <div className="help">
+              Pick 1 or more numbers that sum to the number of stars
+            </div>
+
+            <div className="body">
+              <div className="left">
+                 {utils.range(1, stars).map(starId =>
+                    <div key={starId} className="star" />
+                 )}
+              </div>
+              
+              <div className="right">
+                {utils.range(1, 9).map(number =>
+                  <button key={number} className="number">{number}</button>
+                )}
+              </div>
+
+            </div>
+            <div className="timer">Time Remaining: 10</div>
+          </div>
+        );
+      };
+
+      // Color Theme
+      const colors = {
+        available: 'lightgray',
+        used: 'lightgreen',
+        wrong: 'lightcoral',
+        candidate: 'deepskyblue',
+      };
+
+      // Math science
+      const utils = {
+        // Sum an array
+        sum: arr => arr.reduce((acc, curr) => acc + curr, 0),
+
+        // create an array of numbers between min and max (edges included)
+        range: (min, max) => Array.from({ length: max - min + 1 }, (_, i) => min + i),
+
+        // pick a random number between min and max (edges included)
+        random: (min, max) => min + Math.floor(Math.random() * (max - min + 1)),
+
+        // Given an array of numbers and a max...
+        // Pick a random sum (< max) from the set of all available sums in arr
+        randomSumIn: (arr, max) => {
+          const sets = [[]];
+          const sums = [];
+          for (let i = 0; i < arr.length; i++) {
+            for (let j = 0, len = sets.length; j < len; j++) {
+              const candidateSet = sets[j].concat(arr[i]);
+              const candidateSum = utils.sum(candidateSet);
+              if (candidateSum <= max) {
+                sets.push(candidateSet);
+                sums.push(candidateSum);
+              }
+            }
+          }
+          return sums[utils.random(0, sums.length - 1)];
+        },
+      };
+
+      ReactDOM.render(<StarMatch />, mountNode);
+
+
+      // *** The React 18 way:
+      // root.render(<StarMatch />);
+
+
+    /*=====================================
+    #  Module 5 - Extracting Components for reusability
+       Tips in identifying use case as a candidate for making 
+       it a component: 
+         - every time in the UI you have many items that share similar
+           data or behavior, it is a good candidate for an item component
+    =====================================*/
+        
+    /*=====================================
+       Module 5 - Extracting Components for reusability
+       Tips in identifying use case as a candidate for making 
+       it a component: 
+         - every time in the UI you have many items that share similar
+           data or behavior, it is a good candidate for an item component
+    =====================================*/
+        
+     const StarsDisplay = props => (
+        <>
+          {utils.range(1, props.count).map(starId => (
+            <div key={starId} className="star" />   //I stll need the  key={starId} because that is the dynamic child  inside the map
+          ))}
+        </>
+      );
+
+      // create a new component called PlayNumber to replace
+      // button key={number} className="number">{number}</button>
+      
+
+     const PlayNumber = props => (
+      //in here the props.numberofstars is the the pointer to to the state "stars"
+     	<button 
+               className="number"
+               style={{ backgroundColor: colors[props.status] }}
+               
+              onClick={() => console.log('Num', props.numberofstars)}
+             >
+        {props.number}
+      </button>
+      );
+      
+      const StarMatch = () => {
+          //display stars based on this value
+          //const stars = 6;
+          //instead of constant 6, make it dynamic
+          // const stars = utils.random(1,9); 
+          
+          //better still make const stars a state. "stars" is now a state element
+          //useState(utils.random(1,9)); is the code that gives initial value to stars state element
+          //Tip: whwnever you identitfy a data eleemnt that's used in the UI and is goingto change value, you should 
+          //make it a state element
+          const [stars, setStars] = useState(utils.random(1,9)); 
+          
+          return (
+            //Notes: Map() creates a  new array populated with the results and 
+            //       calling a provided function (called "callback function")
+            //       starId => <div key={starId} className="star" is the anonymous callback function
+            //       and is executed on each element of the array. "starId is the name of the new array
+          
+            //left gneerates the stars. right generates the buttons 1-9
+            <div className="game">
+              <div className="help">
+                Pick 1 or more numbers that sum to the number of stars
+              </div>
+              
+              <div className="body">
+                <div className="left">
+				        	<StarsDisplay count={stars}/>  //pass the state the number of  stars (the state) as prop to 
+                                                 StarsDisplay Component
+                                                 //doesn't have to be same name.it can called count and this 
+                                                 //count can be assigned to stars
+                </div>
+                
+                <div className="right">
+               	{utils.range(1, 9).map(number =>
+                	<PlayNumber key={number} number={number}/>
+              )}
+                  
+        </div>
+              </div>
+              <div className="timer">Time Remaining: 10</div>
+            </div>
+          );
+        };
+  
+    
+
+      // Color Theme
+      const colors = {
+        available: 'lightgray',
+        used: 'lightgreen',
+        wrong: 'lightcoral',
+        candidate: 'deepskyblue',
+      };
+
+      // Math science
+      const utils = {
+        // Sum an array
+        sum: arr => arr.reduce((acc, curr) => acc + curr, 0),
+
+        // create an array of numbers between min and max (edges included)
+        range: (min, max) => Array.from({ length: max - min + 1 }, (_, i) => min + i),
+
+        // pick a random number between min and max (edges included)
+        random: (min, max) => min + Math.floor(Math.random() * (max - min + 1)),
+
+        // Given an array of numbers and a max...
+        // Pick a random sum (< max) from the set of all available sums in arr
+        randomSumIn: (arr, max) => {
+          const sets = [[]];
+          const sums = [];
+          for (let i = 0; i < arr.length; i++) {
+            for (let j = 0, len = sets.length; j < len; j++) {
+              const candidateSet = sets[j].concat(arr[i]);
+              const candidateSum = utils.sum(candidateSet);
+              if (candidateSum <= max) {
+                sets.push(candidateSet);
+                sums.push(candidateSum);
+              }
+            }
+          }
+          return sums[utils.random(0, sums.length - 1)];
+        },
+      };
+
+      ReactDOM.render(<StarMatch />, mountNode);
+       
+        
+
+
+        // Color Theme
+        const colors = {
+          available: 'lightgray',
+          used: 'lightgreen',
+          wrong: 'lightcoral',
+          candidate: 'deepskyblue',
+        };
+
+        // Math science
+        const utils = {
+          // Sum an array
+          sum: arr => arr.reduce((acc, curr) => acc + curr, 0),
+
+          // create an array of numbers between min and max (edges included)
+          range: (min, max) => Array.from({ length: max - min + 1 }, (_, i) => min + i),
+
+          // pick a random number between min and max (edges included)
+          random: (min, max) => min + Math.floor(Math.random() * (max - min + 1)),
+
+          // Given an array of numbers and a max...
+          // Pick a random sum (< max) from the set of all available sums in arr
+          randomSumIn: (arr, max) => {
+            const sets = [[]];
+            const sums = [];
+            for (let i = 0; i < arr.length; i++) {
+              for (let j = 0, len = sets.length; j < len; j++) {
+                const candidateSet = sets[j].concat(arr[i]);
+                const candidateSum = utils.sum(candidateSet);
+                if (candidateSum <= max) {
+                  sets.push(candidateSet);
+                  sums.push(candidateSum);
+                }
+              }
+            }
+            return sums[utils.random(0, sums.length - 1)];
+          },
+        };
+
+        ReactDOM.render(<StarMatch />, mountNode);
+
+
+    /*=====================================
+    # Module 5 View Functions
+      https://app.pluralsight.com/course-player?clipId=b407cd7e-5b68-4bca-9762-914e502aac2f
+      jsdrops.com/rgs3.3
+    =====================================*/
+            /*=====================================
+            # Module 5 View Functions
+              https://app.pluralsight.com/course-player?clipId=b407cd7e-5b68-4bca-9762-914e502aac2f
+              jsdrops.com/rgs3.3
+            =====================================*/
+
+          const StarsDisplay = props => (
+            <>
+              {utils.range(1, props.count).map(starId => (
+                <div key={starId} className="star" />
+              ))}
+            </>
+          );
+
+          //PlayNumber need access to availableNums and candidateNums
+          //and stars to be able to render itself. so go to line 50 PlayNumber 
+          //pass the these data to this component
+          const PlayNumber = props => (
+            <button 
+              className="number"
+              style={{backgroundColor: colors[props.status]}}
+              onClick={() => console.log('Num', props.number)}
+              >
+              {props.number}
+            </button>
+          );
+
+          const StarMatch = () => {
+            //define state called stars
+            const [stars, setStars] = useState(utils.random(1, 9));
+            
+            //define additional state. playNumber component need access to these two state.
+            //so we need to passs some kind of data to playNumber componen
+            //It needs access to "stars" state to be able to render itself
+            //let's that we only have 1,2,3,4,5 as avaialble numbers.
+            //6,7,8,9 are used already.we cant play it anymore these numbers
+        
+      // const [availableNums,setAvailableNums] = useState(1,2,3,4,5); 
+        const [availableNums, setAvailableNums] = useState(utils.range(1, 9));
+        //let's just say 2 and 3 are candidate numbers, 2 and 3 need to show as candidates
+        //const [candidateNums,setCandidateNums] = useState([2,3]);  
+        const [candidateNums, setCanditateNums] = useState([]); 
+            
+            const candidatesAreWrong =utils.sum(candidateNums) > stars;
+            const numberStatus = (number) => {
+              if (!availableNums.includes(number)) {
+                return 'used';
+              }
+              if (candidateNums.includes(number)) {
+                return candidatesAreWrong ? 'wrong': 'candidate';
+              }
+              return 'available';
+            };
+            
+            return (
+              <div className="game">
+                <div className="help">
+                  Pick 1 or more numbers that sum to the number of stars
+                </div>
+                <div className="body">
+                  <div className="left">
+                    <StarsDisplay count={stars}/>
+                  </div>
+                  <div className="right">
+                    //Map function here is  javascript function that you can invoke On
+                      arrays which produces another array. In this example map takes 
+                      an array of numbers and map it into another array called "number".
+                    //this function is going to return what status the number is using
+                    {utils.range(1, 9).map(number =>
+                      <PlayNumber 
+                        key={number}
+                        status={numberStatus(number)} 
+                        number={number}/>
+                    )}
+                  </div>
+                </div>
+                <div className="timer">Time Remaining: 10</div>
+              </div>
+            );
+          };
+
+          // Color Theme
+          const colors = {
+            available: 'lightgray',
+            used: 'lightgreen',
+            wrong: 'lightcoral',
+            candidate: 'deepskyblue',
+          };
+
+          // Math science
+          const utils = {
+            // Sum an array
+            sum: arr => arr.reduce((acc, curr) => acc + curr, 0),
+
+            // create an array of numbers between min and max (edges included)
+            range: (min, max) => Array.from({ length: max - min + 1 }, (_, i) => min + i),
+
+            // pick a random number between min and max (edges included)
+            random: (min, max) => min + Math.floor(Math.random() * (max - min + 1)),
+
+            // Given an array of numbers and a max...
+            // Pick a random sum (< max) from the set of all available sums in arr
+            randomSumIn: (arr, max) => {
+              const sets = [[]];
+              const sums = [];
+              for (let i = 0; i < arr.length; i++) {
+                for (let j = 0, len = sets.length; j < len; j++) {
+                  const candidateSet = sets[j].concat(arr[i]);
+                  const candidateSum = utils.sum(candidateSet);
+                  if (candidateSum <= max) {
+                    sets.push(candidateSet);
+                    sums.push(candidateSum);
+                  }
+                }
+              }
+              return sums[utils.random(0, sums.length - 1)];
+            },
+          };
+
+          ReactDOM.render(<StarMatch />, mountNode);
+
+          // *** The React 18 way:
+          // root.render(<StarMatch />);
+
+
+    /*=====================================
+      Module 5: Behavior Functions
+       https://app.pluralsight.com/course-player?clipId=340d87a0-3e41-49b7-9e5d-f8d0a0ebceb5
+    =====================================*/
+      
+          /*=====================================
+        # Module 5 Behavior Functions M5-M5
+          https://app.pluralsight.com/course-player?clipId=340d87a0-3e41-49b7-9e5d-f8d0a0ebceb5
+          jsdrops.com/rgs3.3
+          jsdrops.com/rgs3.5 https://jscomplete.com/playground/rgs3.5//final
+        =====================================*/
+
+        const StarsDisplay = props => (
+          <>
+            {utils.range(1, props.count).map(starId => (
+              <div key={starId} className="star" />
+            ))}
+          </>
+        );
+
+        //PlayNumber need access to availableNums and candidateNums
+        //and stars to be able to render itself. so go to line 50 PlayNumber 
+        //pass the these data to this component
+        //M5-5 onClick={onNumberClick} In the PlayNumber we will now be receiving this behaviour
+        //as a Prop
+        const PlayNumber = props => (
+          <button 
+            className="number"
+            style={{ backgroundColor: colors[props.status] }}
+            //onClick={() => console.log('Num', props.number)} //instead of console.log replace it with M5-5 prop
+            onClick={() => props.onClick(props.number, props.status )} 
+          >
+            {props.number}
+          </button>
+        );
+
+        const StarMatch = () => {
+          //define state called stars
+          const [stars, setStars] = useState(utils.random(1, 9));
+          
+          //define additional state. playNumber component need access to these two state.
+          //so we need to passs some kind of data to playNumber componen
+          //It needs access to "stars" state to be able to render itself
+          //let's that we only have 1,2,3,4,5 as avaialble numbers.
+          //6,7,8,9 are used already.we cant play it anymore these numbers
+          
+        // const [availableNums,setAvailableNums] = useState(1,2,3,4,5); 
+          const [availableNums, setAvailableNums] = useState(utils.range(1, 9));
+          //let's just say 2 and 3 are candidate numbers, 2 and 3 need to show as candidates
+          //const [candidateNums,setCandidateNums] = useState([2,3]);  
+          const [candidateNums, setCandidateNums] = useState([]);
+          
+          const candidatesAreWrong =utils.sum(candidateNums) > stars;
+          
+          const numberStatus = number => {
+            if (!availableNums.includes(number)) {
+              return 'used';
+            }
+            if (candidateNums.includes(number)) {
+              return candidatesAreWrong ? 'wrong': 'candidate';
+            }
+            return 'available';
+          };
+          
+          //Added for M5-Behavior FUnction. = M5-5 
+          //Decision we need to make in this function.
+          //This function will receive the number that was clicked and the current status of 
+          //the number that was clicked, and the logic here needs to determine what is 
+          //the new status of this number that was clicked
+          const onNumberClick = (number, currentStatus) => {
+            //based on the current status of the number what should be the status of the new number
+            if (numberStatus == 'used') 
+            { //invalide number clicked. return and do nothing
+              return; 
+            }
+            //if not used make it as a CandidateNumber. Rememeber we have an existing candidateNums array
+            //append the new number selected to this array. 
+            
+            const newCandidateNums =
+              currentStatus === 'available'
+                ? candidateNums.concat(number)
+                : candidateNums.filter(cn => cn !== number);
+            
+            //From this point we have two possibiilities.
+            if(utils.sum(newCandidateNums) !== stars ) {
+              // then we dont have correct answes we just need to mark the numbr as candidate
+              //and we a setCandidateNumbers functios to do that
+              setCandidateNums(newCandidateNums);
+            } else{
+              //this meANS THE SUM OF THE NEWcANDIDATEnUMBERS EQUALS THE COUNT OF STARS. We have the right pick
+              //we need to reset the candidate numbers t oempty array and redraw the number of stars.
+              //this means we need invoke all three state updaters: setStars, setAvailableNums, setCandidateNums
+              
+              //compute new avail nums
+              const newAvailableNums = availableNums.filter(
+                n => !newCandidateNums.includes(n)
+              );
+              
+              //then redraw the avaible numbers
+              setStars(utils.randomSumIn(newAvailableNums,9));
+              
+              //invoke state updater for availble nums
+              setAvailableNums(newAvailableNums);
+              // setCandidateNums to an empty array again.
+              setCandidateNums([]);
+              
+            
+              
+            }    
+          }
+            
+            
+          return (
+            <div className="game">
+              <div className="help">
+                Pick 1 or more numbers that sum to the number of stars
+              </div>
+              <div className="body">
+                <div className="left">
+                  <StarsDisplay count={stars}/>
+                </div>
+                <div className="right">
+                  //Map function here is  javascript function that you can invoke On
+                    arrays which produces another array. In this example map takes 
+                    an array of numbers and map it into another array called "number".
+                  //this function is going to return what status the number is using
+                  {utils.range(1, 9).map(number =>
+                    <PlayNumber 
+                      key={number}
+                      status={numberStatus(number)} 
+                      number={number}
+                      onClick={onNumberClick}  //M5-5 add a new prop and we pass onNumberClick
+                                              //this is how the parent is telling the child cmomponent
+                                              //what behavior to invoke each time it is clicked
+                      />
+                  )}
+                </div>
+              </div>
+              <div className="timer">Time Remaining: 10</div>
+            </div>
+          );
+        };
+
+        // Color Theme
+        const colors = {
+          available: 'lightgray',
+          used: 'lightgreen',
+          wrong: 'lightcoral',
+          candidate: 'deepskyblue',
+        };
+
+        // Math science
+        const utils = {
+          // Sum an array
+          sum: arr => arr.reduce((acc, curr) => acc + curr, 0),
+
+          // create an array of numbers between min and max (edges included)
+          range: (min, max) => Array.from({ length: max - min + 1 }, (_, i) => min + i),
+
+          // pick a random number between min and max (edges included)
+          random: (min, max) => min + Math.floor(Math.random() * (max - min + 1)),
+
+          // Given an array of numbers and a max...
+          // Pick a random sum (< max) from the set of all available sums in arr
+          randomSumIn: (arr, max) => {
+            const sets = [[]];
+            const sums = [];
+            for (let i = 0; i < arr.length; i++) {
+              for (let j = 0, len = sets.length; j < len; j++) {
+                const candidateSet = sets[j].concat(arr[i]);
+                const candidateSum = utils.sum(candidateSet);
+                if (candidateSum <= max) {
+                  sets.push(candidateSet);
+                  sums.push(candidateSum);
+                }
+              }
+            }
+            return sums[utils.random(0, sums.length - 1)];
+          },
+        };
+
+        ReactDOM.render(<StarMatch />, mountNode);
+
+        // *** The React 18 way:
+        // root.render(<StarMatch />);
+
+
+
+    /*=====================================
+    # Module 5: Resetting the State 
+    https://app.pluralsight.com/course-player?clipId=1795c2de-ec15-430f-966e-444c7cadbe52
+    =====================================*/
+                /*=====================================
+            # Module 5 Resetting the State M5-M6
+          https://app.pluralsight.com/course-player?clipId=1795c2de-ec15-430f-966e-444c7cadbe52
+          Start: jsdrops.com/rgs3.5
+          Final: jsdrops.com/rgs3.6
+          =====================================*/
+
+        const StarsDisplay = props => (
+          <>
+            {utils.range(1, props.count).map(starId => (
+              <div key={starId} className="star" />
+            ))}
+          </>
+        );
+
+        //PlayNumber need access to availableNums and candidateNums
+        //and stars to be able to render itself. so go to line 50 PlayNumber 
+        //pass the these data to this component
+        //M5-5 onClick={onNumberClick} In the PlayNumber we will now be receiving this behaviour
+        //as a Prop. This means PlayNumber takes a props
+        const PlayNumber = props => (
+          <button 
+            className="number"
+            style={{ backgroundColor: colors[props.status] }}
+            //onClick={() => console.log('Num', props.number)} //instead of console.log replace it with M5-5 prop
+            onClick={() => props.onClick(props.number, props.status )} 
+          >
+            {props.number}
+          </button>
+        );
+
+        //Create PlayAgain component - added M5-M6. The component takes a props and returns a simple div
+        const PlayAgain = props => (
+          <div className="game-done" >
+            <button onClick={props.onClick}> Play Again </button> //on click invoke the props onclick
+          </div>
+        )
+
+
+        const StarMatch = () => {
+          //define state called stars
+          const [stars, setStars] = useState(utils.random(1, 9));
+          
+          //define additional state. playNumber component need access to these two state.
+          //so we need to passs some kind of data to playNumber componen
+          //It needs access to "stars" state to be able to render itself
+          //let's that we only have 1,2,3,4,5 as avaialble numbers.
+          //6,7,8,9 are used already.we cant play it anymore these numbers
+          
+        // const [availableNums,setAvailableNums] = useState(1,2,3,4,5); 
+          const [availableNums, setAvailableNums] = useState(utils.range(1, 9));
+          //let's just say 2 and 3 are candidate numbers, 2 and 3 need to show as candidates
+          //const [candidateNums,setCandidateNums] = useState([2,3]);  
+          const [candidateNums, setCandidateNums] = useState([]);
+          const candidatesAreWrong =utils.sum(candidateNums) > stars;
+          
+          //Added M5-M6 Call all "set funnctions of the useStates we have above"
+          const resetGame = () => {
+            setStars(utils.random(1, 9)); //sele line 42
+            setAvailableNums(utils.range(1, 9)); //see line 51
+            setCandidateNums([]); //see line 54
+          };
+          
+          //Added M5-M6
+          const gameIsDone = availableNums.length === 0;
+          
+          const numberStatus = number => {
+            if (!availableNums.includes(number)) {
+              return 'used';
+            }
+            if (candidateNums.includes(number)) {
+              return candidatesAreWrong ? 'wrong': 'candidate';
+            }
+            return 'available';
+          };
+          
+          //Added for M5-Behavior FUnction. = M5-5 
+          //Decision we need to make in this function.
+          //This function will receive the number that was clicked and the current status of 
+          //the number that was clicked, and the logic here needs to determine what is 
+          //the new status of this number that was clicked
+          const onNumberClick = (number, currentStatus) => {
+            //based on the current status of the number what should be the status of the new number
+            if (numberStatus == 'used') 
+            { //invalide number clicked. return and do nothing
+              return; 
+            }
+            //if not used make it as a CandidateNumber. Rememeber we have an existing candidateNums array
+            //append the new number selected to this array. 
+            
+          
+            const newCandidateNums =
+              currentStatus === 'available'
+                ? candidateNums.concat(number) // if seleced number is available mark it as candidate
+                : candidateNums.filter(cn => cn !== number);  // if selected number is NO avaailable (meaning it is in the caNDIDAte numbers array already) we should remove it usin javascript filter function
+            
+            //From this point we have two possibiilities.
+            if(utils.sum(newCandidateNums) !== stars ) {
+              // then we dont have correct answes we just need to mark the numbr as candidate
+              //and we a setCandidateNumbers functios to do that
+              setCandidateNums(newCandidateNums);
+            } else{
+              //this meANS THE SUM OF THE NEWcANDIDATEnUMBERS EQUALS THE COUNT OF STARS. We have the right pick
+              //we need to reset the candidate numbers t oempty array and redraw the number of stars.
+              //this means we need invoke all three state updaters: setStars, setAvailableNums, setCandidateNums
+              
+              //compute new avail nums
+              const newAvailableNums = availableNums.filter(
+                n => !newCandidateNums.includes(n)
+              );
+              
+              //then redraw the avaible numbers
+              setStars(utils.randomSumIn(newAvailableNums,9));
+              
+              //invoke state updater for availble nums
+              setAvailableNums(newAvailableNums);
+              // setCandidateNums to an empty array again.
+              setCandidateNums([]);
+              
+            
+              
+            }    
+          }
+            
+            
+          return (
+            <div className="game">
+              <div className="help">
+                Pick 1 or more numbers that sum to the number of stars
+              </div>
+              <div className="body">
+                  
+                <div className="left">
+                  {gameIsDone ? (  
+                    <PlayAgain onClick={resetGame}/>
+                  ) : (
+                    <StarsDisplay count={stars} />
+                  )}
+                  
+                
+                </div>
+                <div className="right">
+                  //Map function here is  javascript function that you can invoke On
+                    arrays which produces another array. In this example map takes 
+                    an array of numbers and map it into another array called "number".
+                  //this function is going to return what status the number is using
+                  {utils.range(1, 9).map(number =>
+                    <PlayNumber 
+                      key={number}
+                      status={numberStatus(number)} 
+                      number={number}
+                      onClick={onNumberClick}  //M5-5 add a new prop and we pass onNumberClick
+                                              //this is how the parent is telling the child cmomponent
+                                              //what behavior to invoke each time it is clicked
+                      />
+                  )}
+                </div>
+              </div>
+              <div className="timer">Time Remaining: 10</div>
+            </div>
+          );
+        };
+
+        // Color Theme
+        const colors = {
+          available: 'lightgray',
+          used: 'lightgreen',
+          wrong: 'lightcoral',
+          candidate: 'deepskyblue',
+        };
+
+        // Math science
+        const utils = {
+          // Sum an array
+          sum: arr => arr.reduce((acc, curr) => acc + curr, 0),
+
+          // create an array of numbers between min and max (edges included)
+          range: (min, max) => Array.from({ length: max - min + 1 }, (_, i) => min + i),
+
+          // pick a random number between min and max (edges included)
+          random: (min, max) => min + Math.floor(Math.random() * (max - min + 1)),
+
+          // Given an array of numbers and a max...
+          // Pick a random sum (< max) from the set of all available sums in arr
+          randomSumIn: (arr, max) => {
+            const sets = [[]];
+            const sums = [];
+            for (let i = 0; i < arr.length; i++) {
+              for (let j = 0, len = sets.length; j < len; j++) {
+                const candidateSet = sets[j].concat(arr[i]);
+                const candidateSum = utils.sum(candidateSet);
+                if (candidateSum <= max) {
+                  sets.push(candidateSet);
+                  sums.push(candidateSum);
+                }
+              }
+            }
+            return sums[utils.random(0, sums.length - 1)];
+          },
+        };
+
+        ReactDOM.render(<StarMatch />, mountNode);
+
+        // *** The React 18 way:
+        // root.render(<StarMatch />);
+    
+    /*=====================================
+    # Module 5: Using Side Effects Hooks
+    https://app.pluralsight.com/course-player?clipId=bf44fffe-f917-4cce-a5c0-fad553c12899
+    =====================================*/
+        //Module 5.7 - Using Side Effects Hooks
+        //This is is an example of Using Side Effects Hooks
+        // Pluralsight: https://app.pluralsight.com/course-player?clipId=bf44fffe-f917-4cce-a5c0-fad553c12899
+        //Start jsdrops.com/rgs3.6
+        //Final: jsdrops.com/rgs3.7
+        //
+        //This app let you play 10 seconds. When the player reaches 10 seconds (countdown) we need  the UI to trigger a re-render.
+        //This means we need to put the logic for the countdown on the state of the component to enable React trigger a UI re-render for ever secon that ticks. Let's call this concept "secondsRemaining" or secondsLeft
+
+
+        const StarsDisplay = props => (
+          <>
+            {utils.range(1, props.count).map(starId => (
+              <div key={starId} className="star" />
+            ))}
+          </>
+        );
+
+        const PlayNumber = props => (
+          <button
+            className="number"
+            style={{backgroundColor: colors[props.status]}}
+            onClick={() => props.onClick(props.number, props.status)}
+          >
+            {props.number}
+          </button>
+        );
+
+        const PlayAgain = props => (
+          <div className="game-done">
+            <div className="message" style={{ color: props.gameStatus === 'lost' ? 'red' : 'green'}} >
+                {props.gameStatus === 'lost' ? 'Game Over' : 'Nice' }
+            </div>
+            <button onClick={props.onClick}>Play Again</button>
+          </div>
+        );
+
+        const StarMatch = () => {
+          const [stars, setStars] = useState(utils.random(1, 9));
+          const [availableNums, setAvailableNums] = useState(utils.range(1, 9));
+          const [candidateNums, setCandidateNums] = useState([]);
+          //M5-M7
+          const [secondsLeft, setSecondsLeft] = useState(10); //initial value of secondsLeft is 10
+          //M5-M7 useEffect function is a way in React to introduce side effect for tohis component
+          //useEffect takes in a function and it will run this function everytime the owner component 
+          //renders it self. To test put a console.log to dispaly something every time the component 
+          //re-render itsel because the state has changed. Click a number --> go to cnosole in devtools
+          //you will see the message "Re-Rendered" x number of times.
+          //This means we can introduce own side effect here
+          useEffect(() => {
+            //console.log('Re-Rendered...');
+            //We need to setTimeout after exactly 1 second and give this time out a function to basically 
+            //change the secondsLeft const and decrement the current value by 1 using the setSecondsLeft function.
+            //Because useEffect is going to set state here (by decrementin seconds left by 1) the StarMatch
+            //componnet is re-rendered by React. the useEffect will continue to run and this will actually
+            //make a loop. Test this. Run the app. You will see the Time Remaining changes by 1 continously.
+            //THis is because of the loop. So we need an Exit condition. secondsLeft is  GT  0 do the loop.
+            //But once the secondsLeft are 0, then dont do this time again.
+            //Note however the useState is going to trigger aagain when we click a number so be careful.
+            //The goof practice is that whenever you create a side effect, you have to clean that side effect
+            //when it is no longer needed.
+              if (secondsLeft > 0 && availableNums.length > 0){   
+                const timerId = setTimeout(() =>{
+                setSecondsLeft(secondsLeft - 1);
+              }, 1000);
+                
+              //to clean up the side effect capture the setTimeOut id and call clearTimeout(timerId).
+              //You should get to the habit of cleaning up after your effects. Meaning always 
+              //return a function that cleans up after the effect
+              return () => clearTimeout(timerId);
+            }
+          });
+          
+          const candidatesAreWrong = utils.sum(candidateNums) > stars;
+          //const gameIsDone = availableNums.length === 0;
+          //M5-M7
+          //if you were able to take all available numbers down to 0 then you won
+          //const gameIsWon = availableNums.length === 0;
+          //if you run out of time you lost the game
+          //const gameIsLost = secondsLeft === 0;
+          
+          //We can simplify by not using two variables gameIsWon ans gameIsLost by doing this way
+          const gameStatus = availableNums.length == 0 ? 'won' : secondsLeft === 0 ? 'lost' : 'active'
+          
+          const resetGame = () => {
+            setStars(utils.random(1, 9));
+            setAvailableNums(utils.range(1, 9));
+            setCandidateNums([]);
+          };
+
+          const numberStatus = number => {
+            if (!availableNums.includes(number)) {
+              return 'used';
+            }
+            if (candidateNums.includes(number)) {
+              return candidatesAreWrong ? 'wrong' : 'candidate';
+            }
+            return 'available';
+          };
+
+          const onNumberClick = (number, currentStatus) => {
+            if (gameStatus !== 'active' || currentStatus === 'used') {
+              return;
+            }
+
+            const newCandidateNums =
+              currentStatus === 'available'
+                ? candidateNums.concat(number)
+                : candidateNums.filter(cn => cn !== number);
+
+            if (utils.sum(newCandidateNums) !== stars) {
+              setCandidateNums(newCandidateNums);
+            } else {
+              const newAvailableNums = availableNums.filter(
+                n => !newCandidateNums.includes(n)
+              );
+              setStars(utils.randomSumIn(newAvailableNums, 9));
+              setAvailableNums(newAvailableNums);
+              setCandidateNums([]);
+            }
+          };
+
+          return (
+            //M5-M7<PlayAgain onClick={resetGame} gameStatus{gameStatus} /> modify to pass the game 
+            //status itself the PlayAgain component in order to show a different message if the game is won or lost.
+            //In order to show a different message if the game is won or lost.
+            //So in the PlayAgain component let's introduce a message by creating another div
+            <div className="game">
+              <div className="help">
+                Pick 1 or more numbers that sum to the number of stars
+              </div>
+              <div className="body">
+                <div className="left">
+                  {gameStatus !== 'active' ? (
+                    <PlayAgain onClick={resetGame} gameStatus{gameStatus} />
+                  ) : (
+                    <StarsDisplay count={stars} />
+                  )}
+                </div>
+                <div className="right">
+                  {utils.range(1, 9).map(number => (
+                    <PlayNumber
+                      key={number}
+                      status={numberStatus(number)}
+                      number={number}
+                      onClick={onNumberClick}
+                    />
+                  ))}
+                </div>
+              </div>
+              <div className="timer">Time Remaining: {secondsLeft}</div>
+            </div>
+          );
+        };
+
+        // Color Theme
+        const colors = {
+          available: 'lightgray',
+          used: 'lightgreen',
+          wrong: 'lightcoral',
+          candidate: 'deepskyblue',
+        };
+
+        // Math science
+        const utils = {
+          // Sum an array
+          sum: arr => arr.reduce((acc, curr) => acc + curr, 0),
+
+          // create an array of numbers between min and max (edges included)
+          range: (min, max) => Array.from({length: max - min + 1}, (_, i) => min + i),
+
+          // pick a random number between min and max (edges included)
+          random: (min, max) => min + Math.floor(Math.random() * (max - min + 1)),
+
+          // Given an array of numbers and a max...
+          // Pick a random sum (< max) from the set of all available sums in arr
+          randomSumIn: (arr, max) => {
+            const sets = [[]];
+            const sums = [];
+            for (let i = 0; i < arr.length; i++) {
+              for (let j = 0, len = sets.length; j < len; j++) {
+                const candidateSet = sets[j].concat(arr[i]);
+                const candidateSum = utils.sum(candidateSet);
+                if (candidateSum <= max) {
+                  sets.push(candidateSet);
+                  sums.push(candidateSum);
+                }
+              }
+            }
+            return sums[utils.random(0, sums.length - 1)];
+          },
+        };
+
+        ReactDOM.render(<StarMatch />, mountNode);	
+
+        // *** The React 18 way:
+        // root.render(<StarMatch />);
+
+    /*=====================================
+    # Module 5: Unmounting and Remounting
+    https://app.pluralsight.com/course-player?clipId=d45a3e8e-65a8-40ff-9819-b88ff51fd896
+    =====================================*/
+        /*
+          Module 5: Unmounting and Remounting
+            https://app.pluralsight.com/course-player?clipId=d45a3e8e-65a8-40ff-9819-b88ff51fd896
+            Start: jsdrops.com/rgs3.7 - fully working
+            Final: jsdrops.com/rgs3.8
+            
+          ToDO in this Version: Put logic behind "play Again" button  
+        */
+
+        // STAR MATCH - V7
+
+        const StarsDisplay = props => (
+          <>
+            {utils.range(1, props.count).map(starId => (
+              <div key={starId} className="star" />
+            ))}
+          </>
+        );
+
+        const PlayNumber = props => (
+          <button
+            className="number"
+            style={{backgroundColor: colors[props.status]}}
+            onClick={() => props.onClick(props.number, props.status)}
+          >
+            {props.number}
+          </button>
+        );
+
+        const PlayAgain = props => (
+          <div className="game-done">
+            <div 
+              className="message"
+              style={{ color: props.gameStatus === 'lost' ? 'red' : 'green'}}
+            >
+              {props.gameStatus === 'lost' ? 'Game Over' : 'Nice'}
+            </div>
+            <button onClick={props.onClick}>Play Again</button>
+          </div>
+        );
+
+          //const StarMatch = () => { M5-M7 - rename StarMatch to Game 
+          //and introduce another componnet called StarMatch with "props" as argument
+          const Game = (props) => {
+          const [stars, setStars] = useState(utils.random(1, 9));
+          const [availableNums, setAvailableNums] = useState(utils.range(1, 9));
+          const [candidateNums, setCandidateNums] = useState([]);
+          const [secondsLeft, setSecondsLeft] = useState(10);
+
+          useEffect(() => {
+            if (secondsLeft > 0 && availableNums.length > 0) {
+              const timerId = setTimeout(() => {
+                setSecondsLeft(secondsLeft - 1);
+              }, 1000);
+              return () => clearTimeout(timerId);
+            }
+          });  
+
+          const candidatesAreWrong = utils.sum(candidateNums) > stars;
+          
+          const gameStatus = availableNums.length === 0 
+            ? 'won'
+            : secondsLeft === 0 ? 'lost' : 'active'  
+          
+          //M5-M& Comment this out. Come out with a different mechanism to reset the
+          //game. That mechanism is to unmount the StarMatch component froom the DOM
+          //and mount it again.
+          //To accomplish that we need to makke StarMatch component a container of 
+          //another component that we will create. We will call it "Game"
+          //which will make this application is no longer a single game. 
+          //THis application will render many games as we go on. 
+          //First let's rename StarMatch to  Game
+          
+          //const resetGame = () => {
+          //	setStars(utils.random(1, 9));
+          //  setAvailableNums(utils.range(1, 9));
+          //  setCandidateNums([]);
+        // };
+
+          const numberStatus = number => {
+            if (!availableNums.includes(number)) {
+              return 'used';
+            }
+            if (candidateNums.includes(number)) {
+              return candidatesAreWrong ? 'wrong' : 'candidate';
+            }
+            return 'available';
+          };
+
+          const onNumberClick = (number, currentStatus) => {
+            if (gameStatus !== 'active' || currentStatus === 'used') {
+              return;
+            }
+
+            const newCandidateNums =
+              currentStatus === 'available'
+                ? candidateNums.concat(number)
+                : candidateNums.filter(cn => cn !== number);
+
+            if (utils.sum(newCandidateNums) !== stars) {
+              setCandidateNums(newCandidateNums);
+            } else {
+              const newAvailableNums = availableNums.filter(
+                n => !newCandidateNums.includes(n)
+              );
+              setStars(utils.randomSumIn(newAvailableNums, 9));
+              setAvailableNums(newAvailableNums);
+              setCandidateNums([]);
+            }
+          };
+
+          return (
+            //M5-M7 modify to make PlayAgain component to receive a new prop
+            //props.startNewGame. Repalce resetGame with props.startNewGame line 123
+            <div className="game">
+              <div className="help">
+                Pick 1 or more numbers that sum to the number of stars
+              </div>
+              <div className="body">
+                <div className="left">
+                  {gameStatus !== 'active' ? (
+                    <PlayAgain onClick={props.startNewGame} gameStatus={gameStatus} />
+                  ) : (
+                    <StarsDisplay count={stars} />
+                  )}
+                </div>
+                <div className="right">
+                  {utils.range(1, 9).map(number => (
+                    <PlayNumber
+                      key={number}
+                      status={numberStatus(number)}
+                      number={number}
+                      onClick={onNumberClick}
+                    />
+                  ))}
+                </div>
+              </div>
+              <div className="timer">Time Remaining: {secondsLeft}</div>
+            </div>
+          );
+        };
+
+        //M5-M7 Add this new component after renaming StarMatch to Game 
+        //This component returns StarMatch which we renamed to Game
+        const StarMatch = () => {
+          //first let's introduce a state here called gameId with initial value of 1
+          const [gameId, setGameId] = useState(1);
+          //return a Game with key. This will render the game but we still need to 
+          //modify the onCLick mmechanism here.
+          //Now because the resetGame is now part of StrtMatch logic we have 
+          //to pass a behavior here down to every "Game" component to design 
+          //the reset mechanism. We will call it startNewGame function - an inline 
+          //function in this case.
+          
+          //Note here the Game component receives a prop called StartNewGame, 
+          //AND this prop will reset the Game. 
+          //When PalyAgain button is clicked, that will make the game unmount, clear 
+          //all side effects, ND MOUNT A NEW GAME WITH A new key... the new 
+          //key will be for gameId = 2 because we incremented it.
+          return <Game key={gameId} startNewGame={() => setGameId(gameId + 1)}/>;
+        }
+
+
+
+        // Color Theme
+        const colors = {
+          available: 'lightgray',
+          used: 'lightgreen',
+          wrong: 'lightcoral',
+          candidate: 'deepskyblue',
+        };
+
+        // Math science
+        const utils = {
+          // Sum an array
+          sum: arr => arr.reduce((acc, curr) => acc + curr, 0),
+
+          // create an array of numbers between min and max (edges included)
+          range: (min, max) => Array.from({length: max - min + 1}, (_, i) => min + i),
+
+          // pick a random number between min and max (edges included)
+          random: (min, max) => min + Math.floor(Math.random() * (max - min + 1)),
+
+          // Given an array of numbers and a max...
+          // Pick a random sum (< max) from the set of all available sums in arr
+          randomSumIn: (arr, max) => {
+            const sets = [[]];
+            const sums = [];
+            for (let i = 0; i < arr.length; i++) {
+              for (let j = 0, len = sets.length; j < len; j++) {
+                const candidateSet = sets[j].concat(arr[i]);
+                const candidateSum = utils.sum(candidateSet);
+                if (candidateSum <= max) {
+                  sets.push(candidateSet);
+                  sums.push(candidateSum);
+                }
+              }
+            }
+            return sums[utils.random(0, sums.length - 1)];
+          },
+        };
+
+        ReactDOM.render(<StarMatch />, mountNode);	
+
+        // *** The React 18 way:
+        // root.render(<StarMatch />);
+
+
+    /*=====================================
+    # Module 5: Using Custom Hooks
+    https://app.pluralsight.com/course-player?clipId=142300a2-5d5b-4b4d-b2d9-339e7acdd2df
+    =====================================*/
+ 
+========================================
+Module 6: Setting Up Develpment Environment
+========================================
+  - navigate to https://nodejs.org/en/
+  - install node.16.0 LTS
+ 

@@ -1,0 +1,72 @@
+
+1. Installing node and creating app:
+    - go to https://nodejs.org and have Node running on your system
+    - download and install latest node or run the windows installer
+      Note: create-react-app is a package in node
+
+   
+    - once node is available in your system you should be able to run:
+        
+        npm -v to see the version
+
+        npx -v command
+
+        - create react environment for an application: 
+            npm i -g create-react-app && create-react-app cra-test 
+                 this will download 
+                  Create React App and store it in your systeme and then run the command to
+                 create cra-test app
+
+            npx create-react-app cra-test3 - is a better way of creating a react app
+                 the advantage of this command is that instead of giving a copy Create React App
+                 package locally and manually maintaning it when it gets ne releases,
+                 for example, with npx, you dont really need to do that, you just use whatever is the 
+                 recent release of Create React App directly from NPM registry in the server.
+
+               "x" is for execute. if the package is not availble npm will download the
+                package from the registry and cache it. It will also download a new one if needed
+                At this point np, is installig its depemdencies namely: react, react-dom and react-scripts...
+
+            Commands to run after creating the app in this case cra-test3: 
+                npm start 
+                npm build
+                npm test - start the test runner 
+                npm run eject - removes this tool and copies build dependencies, configuration files 
+                     and scripts into the app directory
+
+             Lets explore the generated files 
+                do cd cra-test3  -> code . to bring up the source code in VS Code
+                   src.index.js file is the main renderer 
+               run nmp eject in order to ????
+
+    Link to Pluralsight Course: React Getting Started 
+      https://app.pluralsight.com/course-player?clipId=a028fa58-7f10-4613-9d46-0b4885bba5a7
+
+2. Cloning a React project
+        Create a new directory: # mkdir new_dir
+        Copy all the contents of your current project, except "node_modules" directory.
+        Must include package-lock.json to maintain package versions across parallel installs.
+        Now, navigate to the "new_dir" & run: npm install
+        This will install all the packages required & should work without any issues
+
+3. Creating your project on your own Javascript Development Environment using library 
+   called "ReactFul" created by the course author.
+
+    Demo: C:\_AMyReactDev\star-match
+
+    (1) Create the project star-match
+          md star-match
+          npx reactful star-match  - this creates a bare bone project repo that is 
+                                     fully configures for server-side render. All the 
+                                     files are there ready for you to customize it.
+          npm start 
+
+          npm test #run all test 
+
+          do code . 
+
+        Install Prettier:
+           npm install -g prettier
+           go to VSCode and install "Prettier Code Formatter" and "Prettier Eslint"
+
+     (2)

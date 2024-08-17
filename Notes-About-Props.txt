@@ -1,0 +1,55 @@
+/*================================================================
+ This version will discuss Props Destructuring via Object Destructuring:
+   1. To use object destucturing we need to refactor Search compnent 
+      arrow function from concise body to block body
+
+  Note: 
+     Question: Why use 
+          1. array destructuring for React Hooks like useState and  
+          2. object destructuring for props? Answer: 
+
+      Answer:
+         useState returns an array 
+         whereas props are objects;
+         
+     hence we need to apply the appropriate operation for the underlying data structure. 
+     The benefit of having an array returned from useState is that the values can be 
+     given any name in the destructuring operation.
+=============================================*/
+
+ Props Handling 
+     1. Props Destructuring via Object Destructuring
+          const user = {
+           firstName: 'Robin',
+           lastName: 'Wieruch',
+           };
+         
+         // without object destructuring
+         const firstName = user.firstName;
+         const lastName = user.lastName;
+         
+         // with object destructuring
+         const { firstName, lastName } = user;
+
+//2. Nested destructuring help us to gather all needed information of the item
+  //objectin the function signature for immediate use
+  //However, nested destructuring introduces lots of clutter through indentations 
+  //in the function signature. 
+  const Item = ({item: {title, url,author, num_comments, points,},}) => ( 
+  <li>
+    <span>
+      <a href={url}>{title}</a>
+    </span>
+    <span>{author}</span>
+    <span>{num_comments}</span>
+    <span>{points}</span>
+  </li>
+
+
+  //concatenating variables into a string
+ //var fullName = `${firstName} ${lastName}`
+ //console.log(fullName);
+
+SPREAD OPERATOR 
+  Example "...house" -  returns all the kv pair of the prop. meaning it returns all properties
+                        and the value of each property.
