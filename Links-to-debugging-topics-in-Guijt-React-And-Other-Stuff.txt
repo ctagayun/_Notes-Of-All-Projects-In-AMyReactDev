@@ -1,0 +1,24 @@
+
+1. How to Debug React Apps with VS Code
+    https://profy.dev/article/debug-react-vscode
+
+2. React State Hooks: useReducer, useState, useContext April 06, 2019  by Robin Wieruch
+     - https://www.robinwieruch.de/react-state-usereducer-usestate-usecontext/
+
+3. React useReducer: complex State
+     - https://www.robinwieruch.de/react-state-usereducer-usestate-usecontext/#react-usereducer-complex-state
+
+4. React useContext: global State
+     - https://www.robinwieruch.de/react-state-usereducer-usestate-usecontext/#react-usecontext-global-state
+
+5.  implementing Redux with React Hooks
+     - https://www.robinwieruch.de/react-state-usereducer-usestate-usecontext/#react-usereducer-complex-state
+
+6. How to create Redux with React Hooks?
+     - https://www.robinwieruch.de/redux-with-react-hooks/
+
+7. React event handlers: 
+     - https://www.robinwieruch.de/react-event-handler/
+
+8. Update item in a List 
+     - https://www.robinwieruch.de/react-event-handler/
