@@ -26,3 +26,24 @@
 9. Conditonal Rendering
      - https://www.robinwieruch.de/conditional-rendering-react/
      
+10. How to React with Webpack 5 - Setup Tutorial
+    https://www.robinwieruch.de/minimal-react-webpack-babel-setup/
+ 
+ 11. How to use Prettier in VS Code
+    - https://www.robinwieruch.de/how-to-use-prettier-vscode/
+
+ 12.   How to use CSS Modules in React
+    - https://www.robinwieruch.de/react-css-modules/
+
+ 13. How to use Fonts with Webpack 5 - Setup Tutorial
+     - https://www.robinwieruch.de/webpack-font/
+
+ 14. How to use Images with Webpack 5 - Setup Tutorial
+    - https://www.robinwieruch.de/webpack-images/
+
+
+ 15. Course Modules 
+      React with Webpack - https://courses.robinwieruch.de/p/the-road-to-learn-react
+
+ 16. Binding Functions and Enable/Disable State in HTML Buttons with React.js
+      https://www.pluralsight.com/resources/blog/guides/binding-functions-and-enabledisable-state-in-html-buttons-with-reactjs
