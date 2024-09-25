@@ -4,7 +4,7 @@
     - navigate to the folder where you want to create your React project
         cd C:\_AMyReactDev\chitoreactdev
     - create the React project where xxxx is the project name
-        npm create vite@latest React-Libraries-2024-Forms -- --template react
+        npm create vite@latest react-app-created-by-vite -- --template react
 
     - Now run:
         cd fakeapi

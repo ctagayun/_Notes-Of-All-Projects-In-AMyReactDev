@@ -17,7 +17,7 @@
                   Create React App and store it in your systeme and then run the command to
                  create cra-test app
 
-            npx create-react-app cra-test3 - is a better way of creating a react app
+            npx create-react-app manually-setup-react-app - is a better way of creating a react app
                  the advantage of this command is that instead of giving a copy Create React App
                  package locally and manually maintaning it when it gets ne releases,
                  for example, with npx, you dont really need to do that, you just use whatever is the 

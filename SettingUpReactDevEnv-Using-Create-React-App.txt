@@ -20,7 +20,7 @@ Link to Setting up a react project by Robin:
                   Create React App and store it in your systeme and then run the command to
                  create cra-test app
 
-            npx create-react-app stylgram-demo-of-app-using-styled-components
+            npx create-react-app reviewfolder15-configure-manually-created-react-app
                  - is a better way of creating a react app
                  the advantage of this command is that instead of giving a copy Create React App
                  package locally and manually maintaning it when it gets ne releases,
