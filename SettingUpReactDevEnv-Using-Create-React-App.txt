@@ -2,6 +2,8 @@
 Link to Setting up a react project by Robin:
     https://courses.robinwieruch.de/p/the-road-to-learn-react
  
+Frameworks to Build New React Project: https://react.dev/learn/start-a-new-react-project
+   
 1. Installing node and creating app:
     - go to https://nodejs.org and have Node running on your system
     - download and install latest node or run the windows installer
@@ -15,12 +17,12 @@ Link to Setting up a react project by Robin:
         npx -v command
 
         - create react environment for an application: 
-            npm i -g create-react-app && create-react-app Learn-React-Router6-Tutorial
+            npm i -g create-react-app & myapp
                  this will download 
                   Create React App and store it in your systeme and then run the command to
                  create cra-test app
 
-            npx create-react-app reviewfolder15-configure-manually-created-react-app
+            npx create-react-app test
                  - is a better way of creating a react app
                  the advantage of this command is that instead of giving a copy Create React App
                  package locally and manually maintaning it when it gets ne releases,
