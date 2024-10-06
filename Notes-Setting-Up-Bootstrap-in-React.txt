@@ -1,0 +1,7 @@
+ npm install bootstrap
+    Once the installation is complete, we can include it in our app’s 
+    entry file in main.jsx :
+    --  Bootstrap CSS
+    import "bootstrap/dist/css/bootstrap.min.css";
+    -- Bootstrap Bundle JS
+    import "bootstrap/dist/js/bootstrap.bundle.min";

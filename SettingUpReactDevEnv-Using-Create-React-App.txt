@@ -10,19 +10,29 @@ Frameworks to Build New React Project: https://react.dev/learn/start-a-new-react
       Note: create-react-app is a package in node
             
    
+    - unistall create-react-app 
+         If you've previously installed create-react-app globally via npm install -g create-react-app, 
+      we recommend you uninstall the package using npm uninstall -g create-react-app or yarn global remove 
+      create-react-app to ensure that npx always uses the latest version.
+
+         npm uninstall -g create-react-app or yarn global remove create-react-app 
+
     - once node is available in your system you should be able to run:
         
         npm -v to see the version
 
         npx -v command
 
-        - create react environment for an application: 
-            npm i -g create-react-app & myapp
-                 this will download 
-                  Create React App and store it in your systeme and then run the command to
-                 create cra-test app
+    - create react environment for an application: 
+      Link to create-react-app: https://github.com/facebook/create-react-app
+      
+           // npm i -g create-react-app & myapp
+           //      this will download 
+           //       Create React App and store it in your systeme and then run the command to
+           //      create cra-test app
 
-            npx create-react-app test
+            npx create-react-app react-router6-tutorial
+                
                  - is a better way of creating a react app
                  the advantage of this command is that instead of giving a copy Create React App
                  package locally and manually maintaning it when it gets ne releases,
