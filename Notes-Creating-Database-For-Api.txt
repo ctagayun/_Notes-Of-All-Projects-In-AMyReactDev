@@ -1,0 +1,26 @@
+
+1. API: Creating Database
+      https://app.pluralsight.com/ilx/video-courses/fbbac3b2-0e56-464b-92f2-0b877f92f12c/6feac58d-c6dc-40ae-afd9-6358f0bf8bc1/b27964d1-1cdb-40c2-a518-1421030ca4c8
+    
+      - go to demo globom3-1-fetching-display-data-create-database
+      
+      -  dotnet add package Microsoft.EntityFrameworkCore.Sqlite (Sqlite works on many platform)
+
+      - create folder in api/data --> 
+          create file HouseEntity.cs and paste code.
+          create HouseDbContext : DbContext
+          create a class called SeedData.cs (dont copy Bid entity yet)
+
+      - next create the initial migration like this:
+          - first install run:
+              dotnet add package Microsoft.EntityFrameworkCore.Design
+
+          - once install is finished create the Initial Migration
+              cd ../api folder and run "dotnet ef migrations add initial"
+
+              you should see: Build started... etc
+          - after successful migration, .netcore will create a folder called "api/Migration"
+
+      - to actually execute the instructions in ./migrations/20241026155228_initial
+        and create the database we need to run the following command:
+             dotnet ef database update

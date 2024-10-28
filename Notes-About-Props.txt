@@ -53,3 +53,111 @@
 SPREAD OPERATOR 
   Example "...house" -  returns all the kv pair of the prop. meaning it returns all properties
                         and the value of each property.
+
+//3. EXAMPLE OF PASSING PROPS AND USING SPREAD OPERATOR
+
+      Note: all function components by convention receive "props" even 
+            if the function doesn't have the param "props coded
+
+            Example:
+                function Button() {
+                return ( 
+                    <button onClick={props.onClickFunction}>
+                      + {props.increment}
+                  </button>
+                );
+              }
+      (1) See C:\_AMyReactDev\chitoreactdev\_guijt-house-react-projects\house-3-forsale-react-props
+          
+          houseArray passed as props called "list" <HouseList list={houseArray} /> 
+          
+          Referenced in HouseList = (props) => {
+            <tbody>
+              {props.list.map((item) => (
+                <tr key={item.id}>
+                  {Object.values(item).map((val) => (
+                      <td>{val}</td>
+                ))}
+              </tr>
+            )
+            )}
+            </tbody>
+        }
+
+      (2) Stories array passed to RenderTheList component as props called "list"
+            <RenderTheList list={stories} />
+
+            It is Referenced in RenderTheList component like this: 
+              const RenderTheList = (props) => {
+                <ul>
+                  {props.list.map( (item) => {
+                    return <li>{item.title}</li>;
+                  })}
+              </ul>
+
+              }
+
+        (3)  See C:\_AMyReactDev\chitoreactdev\_guijt-house-react-projects\house-3-forsale-react-props
+              //Instantiate the HouseRow component and pass each record
+              //to HouseRow component as props.
+              //house={record} means access of the "record"  and 
+              //assign it to variable "house"
+
+              <HouseRow key={record.id} house={record} />
+
+              It is Referenced in HouseRow component like this: 
+                const HouseRow = (props) => (
+                  <tr>
+                  <td>{props.house.id}</td>
+                  <td>{props.house.address}</td>
+                  <td>{props.house.country}</td>
+                  <td>{currencyFormatter.format(props.house.price)}</td>
+                </tr>
+              );
+
+        (4)  See C:\_AMyReactDev\chitoreactdev\_guijt-house-react-projects\house-5-forsale-react-lifting-state-add-search-component
+            
+              React state and searchHandler passed to Search component
+              <Search search={stateOfSearchComponent} onSearch={searchHandler}/> 
+
+              It is referenced like this in Search component:
+              
+              const Search = (props) => {  
+                <label htmlFor="search">Search:</label>
+                    <input id="search" 
+                      value={props.search}
+                      type="text"
+                      onChange={props.onSearch}/> 
+                    <p> 
+                      Searching for <strong>{props.search}</strong>
+                    </p>
+                }
+
+      5. SPREAD OPERATOR
+          See C:\_AMyReactDev\chitoreactdev\_guijt-house-react-projects\house-7-forsale-react-with-search-noadd-useEffect
+          const addHouse = () => {
+          //SetAddHouse is the state updater function 
+          //JavaScript's spread operator allows us to literally spread all key/value pairs 
+          //of an object to another object. This can also be done in React's JSX. 
+          //To do that use spread operator '...' to pass all the object's key/value pairs as 
+          //attribute/value pairs to a JSX element in this case 'item':
+          //    <Item key={item.objectID} {...item}>  ) 
+          setAddHouse([
+              ...houseState, //this is the state. It gets updated
+              {
+                id: 4,
+                address: "32 Valley Way, New York",
+                country: "USA",
+                price: 1000000,
+              },
+            ]); 
+          }
+            
+4. Example of using TYPE to define a prop
+      //define a type to be used as props
+      type Args = {
+        subtitle: string;
+       };
+
+      To use the new type as prop. This means {subtitle} is of type Args
+        const Header = ({subtitle}: Args) =>  
