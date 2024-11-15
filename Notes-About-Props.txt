@@ -161,3 +161,10 @@ SPREAD OPERATOR
 
       To use the new type as prop. This means {subtitle} is of type Args
         const Header = ({subtitle}: Args) =>  
+
+5. Example of using all the values of a prop to initialize useState
+   using the spread operator "...house"
+     const HouseForm = ({ house, submitted }: Args) => {
+     //The following means setHouseState will use the value of houseState from
+     //the value we get from the prop called "house".
+    const [houseState, setHouseState] = useState({ ...house });
