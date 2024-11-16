@@ -168,3 +168,15 @@ SPREAD OPERATOR
      //The following means setHouseState will use the value of houseState from
      //the value we get from the prop called "house".
     const [houseState, setHouseState] = useState({ ...house });
+
+6. Example of setting up a "type" to be used in defining the type of the prop of ValidationSummary
+    //This is a type defined in the ValidationSummary component
+    type Args = {
+      error: AxiosError<Problem>;
+    };
+
+    //Now setup code to destructure a Prop using a type "args defined in the 
+    //ValidationSummary component. (see line 174)
+
+    const ValidationSummary = ({ error }: Args) =>  # Here we are saying that the prop "error" is of type "args"
+    

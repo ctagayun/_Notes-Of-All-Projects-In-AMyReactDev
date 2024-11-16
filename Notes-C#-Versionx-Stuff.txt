@@ -1,0 +1,32 @@
+
+Link to C# Corner 
+   https://www.c-sharpcorner.com/article/task-and-thread-in-c-sharp/#:~:text=thread%20in%20Windows.-,A%20Task%20represents%20some%20asynchronous%20operation%20and%20is%20part%20of,the%20use%20of%20cancellation%20tokens.
+
+What is Task in C#?
+.NET framework provides Threading.Tasks class to let you create tasks and run them asynchronously. 
+A task is an object that represents some work that should be done. The task can tell you if 
+the work is completed and if the operation returns a result, the task gives you the result.
+
+Why we need Task:
+   It can be used whenever you want to execute something in parallel. Asynchronous 
+   implementation is easy in a task, using’ async’ and ‘await’ keywords.
+
+What is Thread?
+.NET Framework has thread-associated classes in System.Threading namespace.  A Thread is a
+ small set of executable instructions.
+
+Differences Between Task And Thread
+Here are some differences between a task and a thread.
+
+1.The Thread class is used for creating and manipulating a thread in Windows. A Task represents 
+some asynchronous operation and is part of the Task Parallel Library, a set of APIs for 
+running tasks asynchronously and in parallel.
+2. The task can return a result. There is no direct mechanism to return the result from a thread.
+3. Task supports cancellation through the use of cancellation tokens. But Thread doesn't.
+4. A task can have multiple processes happening at the same time. Threads can only have one 
+task running at a time.
+5. We can easily implement Asynchronous using ’async’ and ‘await’ keywords.
+
+6. A new Thread()is not dealing with Thread pool thread, whereas Task does use thread pool thread.
+
+7. Task is a higher level concept than Thread.
