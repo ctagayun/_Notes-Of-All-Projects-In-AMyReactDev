@@ -1,3 +1,7 @@
+
+ How to Use Props in React:
+   https://www.robinwieruch.de/react-pass-props-to-component/
+ 
 /*================================================================
  This version will discuss Props Destructuring via Object Destructuring:
    1. To use object destucturing we need to refactor Search compnent 
@@ -179,4 +183,12 @@ SPREAD OPERATOR
     //ValidationSummary component. (see line 174)
 
     const ValidationSummary = ({ error }: Args) =>  # Here we are saying that the prop "error" is of type "args"
-    
+
+ 7. React Children Prop
+
+   
+      - The children prop in React can be used for composing React components into each other. Because of this 
+      feature, you can put JavaScript primitives or JSX between the opening and closing element's tags:
+      See: 
+             - https://www.robinwieruch.de/react-pass-props-to-component/#reacts-children-prop
+

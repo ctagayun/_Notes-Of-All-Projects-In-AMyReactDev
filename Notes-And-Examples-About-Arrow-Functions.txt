@@ -1,0 +1,15 @@
+
+1. Example of Arrow Functions with:
+     - Async
+     - Typings of parameters
+     - Return values of the function
+
+       export const getTicket = async (ticketId: string): Promise<Ticket | null> =>
+        {
+          await new Promise ((resolve) => setTimeout(resolve,2000)) //*artificial delay. comment it out anytime you want
+
+          const maybeTicket = initialTickets.find((ticket) => ticket.id === ticketId);
+             return new Promise((resolve) => {
+             resolve(maybeTicket || null);
+           })
+        }
